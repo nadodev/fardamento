@@ -12,16 +12,7 @@
     <header class="bg-white shadow-sm border-b border-gray-200">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <a href="{{ route('dashboard') }}" class="flex items-center space-x-3">
-                <svg class="h-10 w-auto" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(10, 10)">
-                        <path d="M20 15 L20 50 L50 50 L50 45 L45 40 L45 20 L30 20 L30 15 Z" fill="#1e3a8a" stroke="#0f172a" stroke-width="1.5"/>
-                        <path d="M20 20 L15 20 L15 30 L20 30 Z" fill="#fbbf24" stroke="#0f172a" stroke-width="1.5"/>
-                        <path d="M50 20 L55 20 L55 30 L50 30 Z" fill="#fbbf24" stroke="#0f172a" stroke-width="1.5"/>
-                        <path d="M30 15 L35 12 L40 15 L40 20 L30 20 Z" fill="#fbbf24" stroke="#0f172a" stroke-width="1.5"/>
-                    </g>
-                    <text x="70" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a">FÁBRICA DE</text>
-                    <text x="70" y="55" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">FARDAMENTOS</text>
-                </svg>
+                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamento" class="h-10 w-auto">
                 <span class="text-xl font-bold text-gray-900">Admin</span>
             </a>
             
@@ -62,4 +53,5 @@
     </div>
 </body>
 </html>
+
 

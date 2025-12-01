@@ -15,6 +15,42 @@ services:
       - DB_DATABASE=fardamento
       - DB_USERNAME=fardamento
       - DB_PASSWORD=fardamento123
+      - APP_ENV=production
+      - APP_DEBUG=false
+    command: >
+      bash -c "
+      echo '=== Iniciando configuração ===' &&
+      echo 'Verificando diretório public...' &&
+      ls -la /var/www/ | head -10 &&
+      [ -d /var/www/public ] && echo 'Diretório public existe' || echo 'AVISO: Diretório public não encontrado!' &&
+      [ -f /var/www/public/index.php ] && echo 'index.php encontrado' || echo 'AVISO: index.php não encontrado!' &&
+      echo 'Instalando dependências...' &&
+      apt-get update -qq &&
+      apt-get install -y -qq git curl libpng-dev libonig-dev libxml2-dev zip unzip &&
+      docker-php-ext-install -j$(nproc) pdo_mysql mbstring exif pcntl bcmath gd &&
+      curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&
+      apt-get install -y -qq nodejs &&
+      curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer &&
+      chmod +x /usr/local/bin/composer &&
+      echo 'Aguardando banco de dados...' &&
+      until php -r \"try { new PDO('mysql:host=db;dbname=fardamento', 'fardamento', 'fardamento123'); exit(0); } catch (PDOException \\$e) { exit(1); }\" 2>/dev/null; do sleep 2; done &&
+      echo 'Banco disponível!' &&
+      [ ! -d vendor ] && echo 'Instalando Composer deps...' && composer install --no-dev --optimize-autoloader --no-interaction || echo 'Composer deps já instalados' &&
+      [ ! -d node_modules ] && echo 'Instalando NPM deps...' && npm install || echo 'NPM deps já instalados' &&
+      [ ! -f public/build/manifest.json ] && echo 'Compilando assets...' && npm run build || echo 'Assets já compilados' &&
+      [ ! -f .env ] && echo 'Criando .env...' && cp .env.example .env && php artisan key:generate --force || echo '.env já existe' &&
+      echo 'Executando migrations...' &&
+      php artisan migrate --force || true &&
+      echo 'Executando seeders...' &&
+      php artisan db:seed --force || true &&
+      php artisan storage:link || true &&
+      echo 'Configurando permissões...' &&
+      mkdir -p /var/www/public /var/www/storage /var/www/bootstrap/cache &&
+      chmod -R 777 /var/www/storage /var/www/bootstrap/cache &&
+      chmod -R 755 /var/www/public &&
+      echo '=== Configuração concluída! ===' &&
+      php-fpm
+      "
 
   nginx:
     image: nginx:alpine
@@ -29,20 +65,36 @@ services:
       - fardamento
     depends_on:
       - app
+    user: root
     command: >
       sh -c "
+      mkdir -p /var/www/public /var/www/storage /var/www/bootstrap/cache &&
+      chmod -R 777 /var/www &&
+      chown -R root:root /var/www &&
       echo 'server {
         listen 80;
         server_name fardamento.leonardogeja.com.br _;
         root /var/www/public;
-        index index.php;
+        index index.php index.html index.htm;
+        charset utf-8;
+        client_max_body_size 20M;
+        autoindex off;
         location / {
           try_files $$uri $$uri/ /index.php?$$query_string;
         }
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location = /robots.txt  { access_log off; log_not_found off; }
+        error_page 404 /index.php;
         location ~ \.php$$ {
+          try_files $$uri =404;
           fastcgi_pass app:9000;
-          fastcgi_param SCRIPT_FILENAME $$document_root$$fastcgi_script_name;
+          fastcgi_index index.php;
+          fastcgi_param SCRIPT_FILENAME $$realpath_root$$fastcgi_script_name;
           include fastcgi_params;
+          fastcgi_hide_header X-Powered-By;
+        }
+        location ~ /\.(?!well-known).* {
+          deny all;
         }
       }' > /etc/nginx/conf.d/default.conf &&
       nginx -g 'daemon off;'

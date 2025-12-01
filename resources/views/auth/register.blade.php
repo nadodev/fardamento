@@ -5,16 +5,7 @@
         <div class="max-w-md w-full space-y-8">
             <div>
                 <div class="flex justify-center">
-                    <svg class="h-20 w-auto" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g transform="translate(10, 10)">
-                            <path d="M20 15 L20 50 L50 50 L50 45 L45 40 L45 20 L30 20 L30 15 Z" fill="#3b82f6" stroke="#1e40af" stroke-width="1.5"/>
-                            <path d="M20 20 L15 20 L15 30 L20 30 Z" fill="#fbbf24" stroke="#1e40af" stroke-width="1.5"/>
-                            <path d="M50 20 L55 20 L55 30 L50 30 Z" fill="#fbbf24" stroke="#1e40af" stroke-width="1.5"/>
-                            <path d="M30 15 L35 12 L40 15 L40 20 L30 20 Z" fill="#fbbf24" stroke="#1e40af" stroke-width="1.5"/>
-                        </g>
-                        <text x="70" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">FÁBRICA DE</text>
-                        <text x="70" y="55" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">FARDAMENTOS</text>
-                    </svg>
+                    <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamento" class="h-20 w-auto">
                 </div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
                     Crie sua conta
