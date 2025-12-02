@@ -5,7 +5,7 @@
     <header class="bg-[#FFD217]/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-[#002164]/20">
         <nav class="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
             <a href="{{ route('home') }}" class="flex items-center space-x-2 md:space-x-3 group">
-                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamento" class="h-10 md:h-14 w-auto group-hover:scale-105 transition-transform">
+                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamentos" class="h-10 md:h-14 w-auto group-hover:scale-105 transition-transform">
             </a>
             
             <!-- Desktop Menu -->
@@ -113,33 +113,6 @@
         </div>
     </section>
 
-    <!-- Estatísticas -->
-    <section class="py-20 bg-white border-t-4 border-[#E6C000]">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="text-center group">
-                    <div class="text-5xl font-extrabold text-[#002164] mb-3 group-hover:scale-110 transition-transform">+20</div>
-                    <div class="text-[#002164]/80 font-semibold text-lg">Anos de Experiência</div>
-                    <div class="mt-2 h-1 w-0 bg-[#002164] group-hover:w-full transition-all duration-500 mx-auto"></div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-5xl font-extrabold text-[#002164] mb-3 group-hover:scale-110 transition-transform">+500</div>
-                    <div class="text-[#002164]/80 font-semibold text-lg">Empresas Parceiras</div>
-                    <div class="mt-2 h-1 w-0 bg-[#002164] group-hover:w-full transition-all duration-500 mx-auto"></div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-5xl font-extrabold text-[#002164] mb-3 group-hover:scale-110 transition-transform">+50k</div>
-                    <div class="text-[#002164]/80 font-semibold text-lg">Peças Produzidas</div>
-                    <div class="mt-2 h-1 w-0 bg-[#002164] group-hover:w-full transition-all duration-500 mx-auto"></div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-5xl font-extrabold text-[#002164] mb-3 group-hover:scale-110 transition-transform">2</div>
-                    <div class="text-[#002164]/80 font-semibold text-lg">Lojas Estratégicas</div>
-                    <div class="mt-2 h-1 w-0 bg-[#002164] group-hover:w-full transition-all duration-500 mx-auto"></div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Sobre a Empresa -->
     <section class="py-24 bg-[#002164] text-[#FFD217] border-t-4 border-[#E6C000] relative overflow-hidden">
@@ -154,28 +127,35 @@
                 <div class="inline-block bg-[#FFD217]/20 text-[#FFD217] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 border border-[#FFD217]/30">
                     CONHEÇA NOSSA EMPRESA
                 </div>
-                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">Fábrica de Fardamento</h2>
+                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">Fábrica de Fardamentos</h2>
                 <p class="text-lg lg:text-xl text-[#FFD217]/90 max-w-4xl mx-auto leading-relaxed mb-6">
-                    Desde 2004, somos referência em uniformes profissionais e equipamentos de proteção individual (EPI's). 
-                    Com duas lojas estrategicamente localizadas, oferecemos qualidade, conforto e durabilidade para transformar 
-                    a imagem da sua empresa.
+                    Desde 2007, fornecemos soluções completas em uniformes profissionais, sempre focando no melhor custo-benefício para nossos clientes. 
+                    Atendemos sob encomenda no atacado e varejo, além de contarmos com loja física com pronta entrega. 
+                    Nossa experiência e compromisso com a qualidade fazem da Fábrica de Fardamentos a escolha certa para transformar a imagem da sua empresa.
                 </p>
             </div>
 
             <!-- Galeria de Fotos por Loja -->
             @php
                 $galeriaSP = [
-                    ['img' => '1.jpg', 'titulo' => 'Loja São Paulo - Exterior', 'descricao' => 'Nossa unidade em São Paulo com fachada moderna e acolhedora'],
-                    ['img' => '2.jpg', 'titulo' => 'Loja São Paulo - Interior', 'descricao' => 'Amplo espaço interno com exposição organizada'],
-                    ['img' => '3.jpg', 'titulo' => 'Loja São Paulo - Produtos', 'descricao' => 'Variedade completa de uniformes profissionais'],
-                    ['img' => '4.jpg', 'titulo' => 'Loja São Paulo - Showroom', 'descricao' => 'Showroom moderno e bem organizado'],
+                    ['img' => '1.jpg', 'titulo' => 'Loja São Paulo', 'descricao' => 'Nossa unidade em São Paulo com fachada moderna e acolhedora'],
+                    ['img' => '2.jpg', 'titulo' => 'Loja São Paulo', 'descricao' => 'Amplo espaço interno com exposição organizada'],
+                    ['img' => '3.jpg', 'titulo' => 'Loja São Paulo', 'descricao' => 'Variedade completa de uniformes profissionais'],
+                    ['img' => '4.jpg', 'titulo' => 'Loja São Paulo', 'descricao' => 'Showroom moderno e bem organizado'],
                 ];
                 
                 $galeriaPE = [
-                    ['img' => '1.jpg', 'titulo' => 'Loja Pernambuco - Exterior', 'descricao' => 'Nossa unidade em Pernambuco com estrutura completa'],
-                    ['img' => '2.jpg', 'titulo' => 'Loja Pernambuco - Interior', 'descricao' => 'Espaço amplo para melhor atendimento'],
-                    ['img' => '3.jpg', 'titulo' => 'Loja Pernambuco - Produtos', 'descricao' => 'Ampla variedade de uniformes e EPI\'s'],
-                    ['img' => '5.jpg', 'titulo' => 'Loja Pernambuco - EPI\'s', 'descricao' => 'Equipamentos de proteção individual de alta qualidade'],
+                    ['img' => 'pernanbuco/1.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Nossa unidade em Pernambuco com estrutura completa'],
+                    ['img' => 'pernanbuco/2.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Detalhes da nossa loja em Pernambuco'],
+                    ['img' => 'pernanbuco/3.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Vitrine com exposição de produtos'],
+                    ['img' => 'pernanbuco/4.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Espaço interno organizado para melhor atendimento'],
+                    ['img' => 'pernanbuco/5.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Ampla variedade de uniformes e EPI\'s'],
+                    ['img' => 'pernanbuco/6.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Diversos modelos de uniformes profissionais'],
+                    ['img' => 'pernanbuco/7.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Equipamentos de proteção individual de alta qualidade'],
+                    ['img' => 'pernanbuco/8.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Ambiente confortável e bem iluminado'],
+                    ['img' => 'pernanbuco/9.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Exposição de peças e uniformes personalizados'],
+                    ['img' => 'pernanbuco/10.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Equipe preparada para melhor atender você'],
+                    ['img' => 'pernanbuco/11.jpg', 'titulo' => 'Loja Pernambuco', 'descricao' => 'Visão geral da loja de Pernambuco'],
                 ];
                 
                 $galeriaCompleta = array_merge($galeriaSP, $galeriaPE);
@@ -192,6 +172,19 @@
                         <h3 class="text-3xl lg:text-4xl font-extrabold text-[#FFD217]">Nossa Unidade em São Paulo</h3>
                     </div>
                     <div class="h-1 flex-1 bg-[#FFD217]/30"></div>
+                </div>
+
+                <!-- Informações da Unidade São Paulo -->
+                <div class="mb-6 text-center text-sm text-[#FFD217]/90 space-y-1">
+                    <p><span class="font-semibold">Endereço:</span> Estrada do Rufino, 850, Serraria, Diadema-SP, CEP 09980-380.</p>
+                    <p><span class="font-semibold">Fone:</span> (11) 4057-3202 &nbsp; | &nbsp; <span class="font-semibold">WhatsApp:</span> (11) 94211-0729</p>
+                    <p>
+                        <span class="font-semibold">Instagram:</span>
+                        <a href="https://instagram.com/fabricadefardamentossp" target="_blank" class="underline hover:text-[#FFD217]">@fabricadefardamentossp</a>
+                        &nbsp; | &nbsp;
+                        <span class="font-semibold">E-mail:</span>
+                        <a href="mailto:fabricadefardamentossp@gmail.com" class="underline hover:text-[#FFD217]">fabricadefardamentossp@gmail.com</a>
+                    </p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -223,24 +216,55 @@
                     </div>
                     <div class="h-1 flex-1 bg-[#FFD217]/30"></div>
                 </div>
+
+                <!-- Informações da Unidade Pernambuco -->
+                <div class="mb-6 text-center text-sm text-[#FFD217]/90 space-y-1">
+                    <p><span class="font-semibold">Endereço:</span> Av. Dr Júlio Maranhão, 7, Guararapes, Jaboatão dos Guararapes-PE, CEP 54325-440.</p>
+                    <p><span class="font-semibold">Fone:</span> (81) 3074-2933 &nbsp; | &nbsp; <span class="font-semibold">WhatsApp:</span> (81) 97910-6667</p>
+                    <p>
+                        <span class="font-semibold">Instagram:</span>
+                        <a href="https://instagram.com/fabricadefardamentos" target="_blank" class="underline hover:text-[#FFD217]">@fabricadefardamentos</a>
+                        &nbsp; | &nbsp;
+                        <span class="font-semibold">E-mail:</span>
+                        <a href="mailto:fabricadefardamentos@gmail.com" class="underline hover:text-[#FFD217]">fabricadefardamentos@gmail.com</a>
+                    </p>
+                </div>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    @foreach($galeriaPE as $index => $foto)
-                        @php
-                            $globalIndex = count($galeriaSP) + $index;
-                        @endphp
-                        <div class="group cursor-pointer" onclick="openGalleryModal({{ $globalIndex }})">
-                            <div class="relative h-72 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-500 border-2 border-[#FFD217]/20 hover:border-[#FFD217]">
-                                <img src="{{ asset('imagem/' . $foto['img']) }}" alt="{{ $foto['titulo'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <div class="absolute bottom-0 left-0 right-0 p-5">
-                                        <h4 class="text-lg font-bold text-[#FFD217] mb-1">{{ $foto['titulo'] }}</h4>
-                                        <p class="text-sm text-[#FFD217]/90">{{ $foto['descricao'] }}</p>
+                <div id="carousel-pe" class="relative">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        @foreach($galeriaPE as $index => $foto)
+                            @php
+                                $globalIndex = count($galeriaSP) + $index;
+                            @endphp
+                            <div class="group cursor-pointer pe-slide hidden" data-pe-index="{{ $index }}" onclick="openGalleryModal({{ $globalIndex }})">
+                                <div class="relative h-72 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-500 border-2 border-[#FFD217]/20 hover:border-[#FFD217]">
+                                    <img src="{{ asset('imagem/' . $foto['img']) }}" alt="{{ $foto['titulo'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                        <div class="absolute bottom-0 left-0 right-0 p-5">
+                                            <h4 class="text-lg font-bold text-[#FFD217] mb-1">{{ $foto['titulo'] }}</h4>
+                                            <p class="text-sm text-[#FFD217]/90">{{ $foto['descricao'] }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+
+                    <!-- Controles do carrossel -->
+                    <button type="button" class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#FFD217]/80 text-[#002164] items-center justify-center shadow-lg hover:bg-[#FFD217] transition" data-pe-prev>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#FFD217]/80 text-[#002164] items-center justify-center shadow-lg hover:bg-[#FFD217] transition" data-pe-next>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+
+                    <div id="pe-dots" class="flex items-center justify-center gap-2 mt-6">
+                        <!-- bolinhas geradas via JS -->
+                    </div>
                 </div>
             </div>
 
@@ -384,12 +408,14 @@
                     <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                         NOSSA HISTÓRIA
                     </div>
-                    <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4 leading-tight">Mais de 20 Anos de Tradição e Excelência</h2>
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4 leading-tight">Mais de 17 Anos de Tradição e Excelência</h2>
                     <p class="text-base lg:text-lg text-[#002164]/80 mb-4 leading-relaxed">
-                        Desde 2004, a Fábrica de Fardamento tem sido sinônimo de excelência na fabricação de uniformes profissionais. Nossa jornada é marcada pela busca incessante por inovação, qualidade e satisfação do cliente.
+                       A Fábrica de Fardamentos se destaca por oferecer o melhor custo-benefício em uniformes profissionais. 
+                        Nossa flexibilidade permite atender desde pequenas empresas até grandes corporações, com soluções personalizadas no atacado e varejo.
                     </p>
                     <p class="text-base lg:text-lg text-[#002164]/80 mb-8 leading-relaxed">
-                        Com duas lojas estrategicamente localizadas, oferecemos atendimento personalizado e soluções sob medida para empresas de todos os portes.
+                        Além de atendimento sob encomenda, mantemos loja física com pronta entrega para sua conveniência. 
+                        Nossa equipe está pronta para ajudá-lo a encontrar a solução ideal para sua empresa. Solicite um orçamento sem compromisso!
                     </p>
                     <div class="space-y-6">
                         <div class="flex items-start space-x-5 group">
@@ -440,14 +466,14 @@
     </section>
 
     <!-- Depoimentos -->
-    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
+    <!-- <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     DEPOIMENTOS
                 </div>
                 <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Clientes Satisfeitos</h2>
-                <p class="text-lg text-[#002164]/80 max-w-2xl mx-auto">Depoimentos de quem confia na qualidade Fábrica de Fardamento</p>
+                <p class="text-lg text-[#002164]/80 max-w-2xl mx-auto">Depoimentos de quem confia na qualidade Fábrica de Fardamentos</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-[#002164]/20">
@@ -466,7 +492,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic leading-relaxed text-lg">"Os uniformes da Fábrica de Fardamento superaram nossas expectativas em qualidade e durabilidade. Nossa equipe está muito satisfeita!"</p>
+                    <p class="text-gray-600 italic leading-relaxed text-lg">"Os uniformes da Fábrica de Fardamentos superaram nossas expectativas em qualidade e durabilidade. Nossa equipe está muito satisfeita!"</p>
                 </div>
                 <div class="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
                     <div class="flex items-center mb-6">
@@ -484,7 +510,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic leading-relaxed text-lg">"Atendimento impecável e entrega dentro do prazo. Recomendo a Fábrica de Fardamento para todas as empresas que buscam excelência."</p>
+                    <p class="text-gray-600 italic leading-relaxed text-lg">"Atendimento impecável e entrega dentro do prazo. Recomendo a Fábrica de Fardamentos para todas as empresas que buscam excelência."</p>
                 </div>
                 <div class="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
                     <div class="flex items-center mb-6">
@@ -502,102 +528,13 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic leading-relaxed text-lg">"A personalização dos uniformes ficou perfeita! A Fábrica de Fardamento realmente entende as necessidades de cada cliente."</p>
+                    <p class="text-gray-600 italic leading-relaxed text-lg">"A personalização dos uniformes ficou perfeita! A Fábrica de Fardamentos realmente entende as necessidades de cada cliente."</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-24 bg-[#002164] text-[#FFD217] relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-            <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
-        </div>
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-3xl lg:text-4xl font-extrabold mb-5">Pronto para Transformar a Imagem da Sua Empresa?</h2>
-            <p class="text-lg mb-8 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
-                Nossa equipe está pronta para criar uniformes personalizados que refletem a identidade da sua marca. Solicite um orçamento sem compromisso!
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ route('contato') }}" class="group bg-[#FFD217] text-[#002164] px-10 py-5 rounded-xl hover:bg-[#FFD217]/90 transition-all font-bold text-lg shadow-2xl hover:shadow-[#FFD217]/50 transform hover:scale-105 inline-flex items-center justify-center gap-2">
-                    Solicitar Orçamento
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </a>
-                <a href="{{ route('sobre') }}" class="bg-[#FFD217]/10 backdrop-blur-md text-[#FFD217] px-10 py-5 rounded-xl hover:bg-[#FFD217]/20 transition-all font-semibold text-lg border-2 border-[#FFD217]/30 hover:border-[#FFD217]/50 inline-flex items-center justify-center">
-                    Conheça Nossa História
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-[#002164] text-[#FFD217] py-16 border-t-4 border-[#E6C000]">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div class="md:border-r-2 md:border-[#E6C000] md:pr-12">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 bg-[#FFD217] rounded-xl flex items-center justify-center shadow-lg">
-                            <span class="text-[#002164] font-bold text-xl">U</span>
-                        </div>
-                        <span class="text-2xl font-bold">Fábrica de Fardamento</span>
-                    </div>
-                    <p class="text-[#FFD217]/80 text-sm mb-6 leading-relaxed">
-                        Desde 2004, a Fábrica de Fardamento é referência em uniformes profissionais de alta qualidade, conforto e durabilidade.
-                    </p>
-                    <p class="text-[#FFD217]/60 text-xs">© 2024 Fábrica de Fardamento. Todos os direitos reservados.</p>
-                </div>
-                <div class="md:border-r-2 md:border-[#E6C000] md:pr-12">
-                    <h3 class="font-bold mb-6 text-lg">Navegação</h3>
-                    <ul class="space-y-3">
-                        <li><a href="{{ route('home') }}" class="text-[#FFD217]/80 hover:text-[#FFD217] transition-colors">Início</a></li>
-                        <li><a href="{{ route('sobre') }}" class="text-[#FFD217]/80 hover:text-[#FFD217] transition-colors">Sobre Nós</a></li>
-                        <li><a href="{{ route('produtos') }}" class="text-[#FFD217]/80 hover:text-[#FFD217] transition-colors">Produtos</a></li>
-                        <li><a href="{{ route('contato') }}" class="text-[#FFD217]/80 hover:text-[#FFD217] transition-colors">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="md:border-r-2 md:border-[#E6C000] md:pr-12">
-                    <h3 class="font-bold mb-6 text-lg">Contato</h3>
-                    <ul class="space-y-3 text-[#FFD217]/80 text-sm">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#FFD217] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                            contato@Fábrica de Fardamento.com.br
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#FFD217] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                            </svg>
-                            (00) 00000-0000
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-6 text-lg">Redes Sociais</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-12 h-12 bg-[#002164]/50 rounded-xl flex items-center justify-center hover:bg-[#FFD217] hover:text-[#002164] transition-all transform hover:scale-110 shadow-lg hover:shadow-xl">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-[#002164]/50 rounded-xl flex items-center justify-center hover:bg-[#FFD217] hover:text-[#002164] transition-all transform hover:scale-110 shadow-lg hover:shadow-xl">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-[#002164]/50 rounded-xl flex items-center justify-center hover:bg-[#FFD217] hover:text-[#002164] transition-all transform hover:scale-110 shadow-lg hover:shadow-xl">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </section> -->
+    
+    @include('layouts.footer')
 
     <script>
         // Mobile Menu Toggle
@@ -637,15 +574,22 @@
         // Gallery Modal Functions
         const galleryImages = [
             // Loja São Paulo
-            {img: '{{ asset("imagem/1.jpg") }}', titulo: 'Loja São Paulo - Exterior', descricao: 'Nossa unidade em São Paulo com fachada moderna e acolhedora'},
-            {img: '{{ asset("imagem/2.jpg") }}', titulo: 'Loja São Paulo - Interior', descricao: 'Amplo espaço interno com exposição organizada'},
+            {img: '{{ asset("imagem/1.jpg") }}', titulo: 'Loja São Paulo', descricao: 'Nossa unidade em São Paulo com fachada moderna e acolhedora'},
+            {img: '{{ asset("imagem/2.jpg") }}', titulo: 'Loja São Paulo', descricao: 'Amplo espaço interno com exposição organizada'},
             {img: '{{ asset("imagem/3.jpg") }}', titulo: 'Loja São Paulo - Produtos', descricao: 'Variedade completa de uniformes profissionais'},
             {img: '{{ asset("imagem/4.jpg") }}', titulo: 'Loja São Paulo - Showroom', descricao: 'Showroom moderno e bem organizado'},
-            // Loja Pernambuco
-            {img: '{{ asset("imagem/1.jpg") }}', titulo: 'Loja Pernambuco - Exterior', descricao: 'Nossa unidade em Pernambuco com estrutura completa'},
-            {img: '{{ asset("imagem/2.jpg") }}', titulo: 'Loja Pernambuco - Interior', descricao: 'Espaço amplo para melhor atendimento'},
-            {img: '{{ asset("imagem/3.jpg") }}', titulo: 'Loja Pernambuco - Produtos', descricao: 'Ampla variedade de uniformes e EPI\'s'},
-            {img: '{{ asset("imagem/5.jpg") }}', titulo: 'Loja Pernambuco - EPI\'s', descricao: 'Equipamentos de proteção individual de alta qualidade'},
+            // Loja Pernambuco (carrossel com novas imagens)
+            {img: '{{ asset("imagem/pernanbuco/1.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Nossa unidade em Pernambuco com estrutura completa'},
+            {img: '{{ asset("imagem/pernanbuco/2.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Detalhes da nossa loja em Pernambuco'},
+            {img: '{{ asset("imagem/pernanbuco/3.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Vitrine com exposição de produtos'},
+            {img: '{{ asset("imagem/pernanbuco/4.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Espaço interno organizado para melhor atendimento'},
+            {img: '{{ asset("imagem/pernanbuco/5.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Ampla variedade de uniformes e EPI\'s'},
+            {img: '{{ asset("imagem/pernanbuco/6.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Diversos modelos de uniformes profissionais'},
+            {img: '{{ asset("imagem/pernanbuco/7.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Equipamentos de proteção individual de alta qualidade'},
+            {img: '{{ asset("imagem/pernanbuco/8.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Ambiente confortável e bem iluminado'},
+            {img: '{{ asset("imagem/pernanbuco/9.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Exposição de peças e uniformes personalizados'},
+            {img: '{{ asset("imagem/pernanbuco/10.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Equipe preparada para melhor atender você'},
+            {img: '{{ asset("imagem/pernanbuco/11.jpg") }}', titulo: 'Loja Pernambuco', descricao: 'Visão geral da loja de Pernambuco'},
         ];
         let currentImageIndex = 0;
 
@@ -681,6 +625,77 @@
             currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
             updateGalleryModal();
         }
+
+        // Carrossel Loja Pernambuco (mostra sempre 4 imagens, com setas e bolinhas, só manual)
+        document.addEventListener('DOMContentLoaded', function () {
+            const peSlides = Array.from(document.querySelectorAll('.pe-slide'));
+            const visibleCount = 4;
+            const prevButton = document.querySelector('[data-pe-prev]');
+            const nextButton = document.querySelector('[data-pe-next]');
+            const dotsContainer = document.getElementById('pe-dots');
+
+            if (peSlides.length > visibleCount) {
+                const pageCount = Math.ceil(peSlides.length / visibleCount);
+                let currentPage = 0;
+
+                function showPage(pageIndex) {
+                    currentPage = (pageIndex + pageCount) % pageCount;
+                    peSlides.forEach((slide, index) => {
+                        const slidePage = Math.floor(index / visibleCount);
+                        const inRange = slidePage === currentPage;
+                        slide.classList.toggle('hidden', !inRange);
+                    });
+
+                    if (dotsContainer) {
+                        const dots = dotsContainer.querySelectorAll('[data-pe-dot]');
+                        dots.forEach((dot, idx) => {
+                            dot.classList.toggle('bg-[#FFD217]', idx === currentPage);
+                            dot.classList.toggle('bg-[#FFD217]/40', idx !== currentPage);
+                        });
+                    }
+                }
+
+                function nextPage() {
+                    showPage(currentPage + 1);
+                }
+
+                // Criar bolinhas
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    for (let i = 0; i < pageCount; i++) {
+                        const dot = document.createElement('button');
+                        dot.type = 'button';
+                        dot.setAttribute('data-pe-dot', i.toString());
+                        dot.className =
+                            'w-2.5 h-2.5 rounded-full bg-[#FFD217]/40 hover:bg-[#FFD217] transition-colors';
+                        dot.addEventListener('click', function () {
+                            showPage(i);
+                        });
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+
+                // Setas
+                function attachArrow(button, direction) {
+                    if (!button) {
+                        return;
+                    }
+                    button.addEventListener('click', function () {
+                        if (direction === 'next') {
+                            nextPage();
+                        } else {
+                            showPage(currentPage - 1);
+                        }
+                    });
+                }
+
+                attachArrow(prevButton, 'prev');
+                attachArrow(nextButton, 'next');
+
+                // Estado inicial
+                showPage(0);
+            }
+        });
 
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {

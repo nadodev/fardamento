@@ -5,7 +5,7 @@
         <div class="max-w-md w-full space-y-8">
             <div>
                 <div class="flex justify-center">
-                    <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamento" class="h-20 w-auto">
+                    <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamentos" class="h-20 w-auto">
                 </div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
                     Crie sua conta
