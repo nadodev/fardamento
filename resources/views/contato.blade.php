@@ -67,7 +67,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-[#FFD217] text-[#002164] py-32 overflow-hidden">
+    <section class="relative bg-white text-[#002164] py-24 overflow-hidden">
         <!-- Background Effects -->
         <div class="absolute inset-0">
             <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
@@ -77,16 +77,16 @@
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <div class="inline-flex items-center gap-2 bg-[#002164]/20 backdrop-blur-md px-5 py-2.5 rounded-full text-sm font-semibold border border-[#002164]/30 mb-8">
+                <div class="inline-flex items-center gap-2 bg-[#002164]/20 backdrop-blur-md px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-[#002164]/30 mb-5">
                     <svg class="w-4 h-4 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                     ESTAMOS PRONTOS PARA ATENDER VOCÊ
                 </div>
-                <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6 text-[#002164]">
+                <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-4 text-[#002164]">
                     Entre em <span class="text-[#002164]">Contato</span>
                 </h1>
-                <p class="text-xl lg:text-2xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
+                <p class="text-lg lg:text-xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
                     Visite-nos em uma de nossas lojas ou envie sua mensagem. Nossa equipe está pronta para ajudar você a encontrar o uniforme perfeito.
                 </p>
             </div>
@@ -94,14 +94,14 @@
     </section>
 
     <!-- Nossas Lojas -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-20 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     NOSSAS UNIDADES
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Nossas Lojas</h2>
-                <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Nossas Lojas</h2>
+                <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Visite-nos em uma de nossas unidades estrategicamente localizadas
                 </p>
             </div>
@@ -127,7 +127,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-lg">Endereço</p>
+                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Endereço</p>
                                     <p class="text-[#002164]/80">Rua Principal, 123 - Centro</p>
                                     <p class="text-[#002164]/80">Cidade - Estado, CEP 00000-000</p>
                                 </div>
@@ -139,7 +139,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-lg">Telefone</p>
+                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Telefone</p>
                                     <p class="text-[#002164]/80">(00) 0000-0000</p>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-lg">Horário de Funcionamento</p>
+                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Horário de Funcionamento</p>
                                     <p class="text-[#002164]/80">Segunda a Sexta: 8h às 18h</p>
                                     <p class="text-[#002164]/80">Sábado: 8h às 13h</p>
                                 </div>
@@ -180,7 +180,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-lg">Endereço</p>
+                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Endereço</p>
                                     <p class="text-[#002164]/80">Av. Comercial, 456 - Bairro Novo</p>
                                     <p class="text-[#002164]/80">Cidade - Estado, CEP 00000-000</p>
                                 </div>
@@ -192,7 +192,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-lg">Telefone</p>
+                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Telefone</p>
                                     <p class="text-[#002164]/80">(00) 0000-0000</p>
                                 </div>
                             </div>
@@ -203,7 +203,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-lg">Horário de Funcionamento</p>
+                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Horário de Funcionamento</p>
                                     <p class="text-[#002164]/80">Segunda a Sexta: 8h às 18h</p>
                                     <p class="text-[#002164]/80">Sábado: 8h às 13h</p>
                                 </div>
@@ -216,15 +216,15 @@
     </section>
 
     <!-- Formulário de Contato -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-16">
-                    <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <div class="text-center mb-14">
+                    <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                         ENVIE SUA MENSAGEM
                     </div>
-                    <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Envie sua Mensagem</h2>
-                    <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Envie sua Mensagem</h2>
+                    <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                         Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.
                     </p>
                 </div>
@@ -232,21 +232,21 @@
                     <form class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="nome" class="block text-[#002164] font-bold mb-3 text-lg">Nome Completo *</label>
+                                <label for="nome" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Nome Completo *</label>
                                 <input type="text" id="nome" name="nome" required class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="Seu nome completo">
                             </div>
                             <div>
-                                <label for="email" class="block text-[#002164] font-bold mb-3 text-lg">E-mail *</label>
+                                <label for="email" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">E-mail *</label>
                                 <input type="email" id="email" name="email" required class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="seu@email.com">
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="telefone" class="block text-[#002164] font-bold mb-3 text-lg">Telefone *</label>
+                                <label for="telefone" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Telefone *</label>
                                 <input type="tel" id="telefone" name="telefone" required class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="(00) 00000-0000">
                             </div>
                             <div>
-                                <label for="loja" class="block text-[#002164] font-bold mb-3 text-lg">Loja de Interesse</label>
+                                <label for="loja" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Loja de Interesse</label>
                                 <select id="loja" name="loja" class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164]">
                                     <option value="">Selecione uma loja</option>
                                     <option value="matriz">Loja Matriz</option>
@@ -255,14 +255,14 @@
                             </div>
                         </div>
                         <div>
-                            <label for="empresa" class="block text-[#002164] font-bold mb-3 text-lg">Empresa</label>
+                            <label for="empresa" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Empresa</label>
                             <input type="text" id="empresa" name="empresa" class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="Nome da empresa">
                         </div>
                         <div>
-                            <label for="mensagem" class="block text-[#002164] font-bold mb-3 text-lg">Mensagem *</label>
+                            <label for="mensagem" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Mensagem *</label>
                             <textarea id="mensagem" name="mensagem" rows="6" required class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all resize-none bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="Sua mensagem..."></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-[#002164] text-[#FFD217] px-10 py-5 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-[1.02] duration-300">
+                        <button type="submit" class="w-full bg-[#002164] text-[#FFD217] px-8 py-4 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-base lg:text-lg shadow-xl hover:shadow-2xl transform hover:scale-[1.02] duration-300">
                             <span class="flex items-center justify-center gap-2">
                                 Enviar Mensagem
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -283,8 +283,8 @@
             <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
         </div>
         <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">Precisa de Ajuda Imediata?</h2>
-            <p class="text-xl mb-10 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
+            <h2 class="text-3xl lg:text-4xl font-extrabold mb-5">Precisa de Ajuda Imediata?</h2>
+            <p class="text-lg mb-8 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
                 Entre em contato conosco agora mesmo. Nossa equipe está pronta para atender você.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">

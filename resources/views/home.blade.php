@@ -67,7 +67,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative bg-[#FFD217] text-[#002164] py-32 overflow-hidden">
+    <section id="inicio" class="relative bg-white text-[#002164] py-32 overflow-hidden">
         <!-- Background Effects -->
         <div class="absolute inset-0">
             <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
@@ -78,16 +78,16 @@
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="space-y-8">
-                    <div class="inline-flex items-center gap-2 bg-[#002164]/20 backdrop-blur-md px-5 py-2.5 rounded-full text-sm font-semibold border border-[#002164]/30">
+                    <div class="inline-flex items-center gap-2 bg-[#002164]/20 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold border border-[#002164]/30">
                         <svg class="w-4 h-4 text-[#002164]" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                         </svg>
                         EXCELÊNCIA DESDE 2004
                     </div>
-                    <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight text-[#002164]">
+                    <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight text-[#002164]">
                         Uniformes Profissionais de <span class="text-[#002164]">Alta Qualidade</span>
                     </h1>
-                    <p class="text-xl lg:text-2xl text-[#002164]/90 leading-relaxed max-w-2xl">
+                    <p class="text-base lg:text-lg text-[#002164]/90 leading-relaxed max-w-2xl">
                         Transforme a identidade da sua equipe com uniformes personalizados. Capricho e comprometimento em cada peça, atendendo empresas em todo o Brasil.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
@@ -114,7 +114,7 @@
     </section>
 
     <!-- Estatísticas -->
-    <section class="py-20 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-20 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="text-center group">
@@ -150,12 +150,12 @@
         </div>
         
         <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-[#FFD217]/20 text-[#FFD217] px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-[#FFD217]/30">
+            <div class="text-center mb-14">
+                <div class="inline-block bg-[#FFD217]/20 text-[#FFD217] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 border border-[#FFD217]/30">
                     CONHEÇA NOSSA EMPRESA
                 </div>
-                <h2 class="text-4xl lg:text-6xl font-extrabold mb-6">Fábrica de Fardamento</h2>
-                <p class="text-xl lg:text-2xl text-[#FFD217]/90 max-w-4xl mx-auto leading-relaxed mb-8">
+                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">Fábrica de Fardamento</h2>
+                <p class="text-lg lg:text-xl text-[#FFD217]/90 max-w-4xl mx-auto leading-relaxed mb-6">
                     Desde 2004, somos referência em uniformes profissionais e equipamentos de proteção individual (EPI's). 
                     Com duas lojas estrategicamente localizadas, oferecemos qualidade, conforto e durabilidade para transformar 
                     a imagem da sua empresa.
@@ -286,14 +286,14 @@
     </section>
 
     <!-- Tecnologia e Produtividade -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     TECNOLOGIA & INOVAÇÃO
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Tecnologia & Produtividade a Serviço do Seu Negócio</h2>
-                <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Tecnologia & Produtividade a Serviço do Seu Negócio</h2>
+                <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Com estrutura moderna e equipe capacitada, garantimos uniformes de alto padrão, otimizando tempo e agregando valor à sua empresa.
                 </p>
             </div>
@@ -330,14 +330,14 @@
     </section>
 
     <!-- Produtos -->
-    <section id="produtos" class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section id="produtos" class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     NOSSOS PRODUTOS
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Nossos Produtos</h2>
-                <p class="text-xl text-[#002164]/80 max-w-2xl mx-auto">Explore nossa linha completa de uniformes profissionais</p>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Nossos Produtos</h2>
+                <p class="text-lg text-[#002164]/80 max-w-2xl mx-auto">Explore nossa linha completa de uniformes profissionais</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 @forelse($produtos as $produto)
@@ -377,18 +377,18 @@
     </section>
 
     <!-- História -->
-    <section id="sobre" class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section id="sobre" class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                    <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                         NOSSA HISTÓRIA
                     </div>
-                    <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6 leading-tight">Mais de 20 Anos de Tradição e Excelência</h2>
-                    <p class="text-lg text-[#002164]/80 mb-6 leading-relaxed">
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4 leading-tight">Mais de 20 Anos de Tradição e Excelência</h2>
+                    <p class="text-base lg:text-lg text-[#002164]/80 mb-4 leading-relaxed">
                         Desde 2004, a Fábrica de Fardamento tem sido sinônimo de excelência na fabricação de uniformes profissionais. Nossa jornada é marcada pela busca incessante por inovação, qualidade e satisfação do cliente.
                     </p>
-                    <p class="text-lg text-[#002164]/80 mb-10 leading-relaxed">
+                    <p class="text-base lg:text-lg text-[#002164]/80 mb-8 leading-relaxed">
                         Com duas lojas estrategicamente localizadas, oferecemos atendimento personalizado e soluções sob medida para empresas de todos os portes.
                     </p>
                     <div class="space-y-6">
@@ -440,14 +440,14 @@
     </section>
 
     <!-- Depoimentos -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     DEPOIMENTOS
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Clientes Satisfeitos</h2>
-                <p class="text-xl text-[#002164]/80 max-w-2xl mx-auto">Depoimentos de quem confia na qualidade Fábrica de Fardamento</p>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Clientes Satisfeitos</h2>
+                <p class="text-lg text-[#002164]/80 max-w-2xl mx-auto">Depoimentos de quem confia na qualidade Fábrica de Fardamento</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-[#002164]/20">
@@ -515,8 +515,8 @@
             <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
         </div>
         <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">Pronto para Transformar a Imagem da Sua Empresa?</h2>
-            <p class="text-xl mb-10 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
+            <h2 class="text-3xl lg:text-4xl font-extrabold mb-5">Pronto para Transformar a Imagem da Sua Empresa?</h2>
+            <p class="text-lg mb-8 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
                 Nossa equipe está pronta para criar uniformes personalizados que refletem a identidade da sua marca. Solicite um orçamento sem compromisso!
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">

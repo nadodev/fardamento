@@ -67,7 +67,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-[#FFD217] text-[#002164] py-32 overflow-hidden">
+    <section class="relative bg-white text-[#002164] py-24 overflow-hidden">
         <!-- Background Effects -->
         <div class="absolute inset-0">
             <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
@@ -83,10 +83,10 @@
                     </svg>
                     MAIS DE 20 ANOS DE EXCELÊNCIA
                 </div>
-                <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6 text-[#002164]">
+                <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-5 text-[#002164]">
                     Sobre a <span class="text-[#002164]">Fábrica de Fardamento</span>
                 </h1>
-                <p class="text-xl lg:text-2xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
+                <p class="text-lg lg:text-xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
                     Conheça nossa história, valores e o compromisso que nos torna referência em uniformes profissionais no Brasil.
                 </p>
             </div>
@@ -94,24 +94,24 @@
     </section>
 
     <!-- Nossa História -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
                         NOSSA HISTÓRIA
                     </div>
-                    <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6 leading-tight">Mais de 20 Anos de Tradição e Excelência</h2>
-                    <p class="text-lg text-[#002164]/80 mb-6 leading-relaxed">
+                    <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-4 leading-tight">Mais de 20 Anos de Tradição e Excelência</h2>
+                    <p class="text-base lg:text-lg text-[#002164]/80 mb-4 leading-relaxed">
                         Desde 2004, a Fábrica de Fardamento tem sido sinônimo de excelência na fabricação de uniformes profissionais. Nossa jornada é marcada pela busca incessante por inovação, qualidade e satisfação do cliente.
                     </p>
-                    <p class="text-lg text-[#002164]/80 mb-6 leading-relaxed">
+                    <p class="text-base lg:text-lg text-[#002164]/80 mb-4 leading-relaxed">
                         Começamos com uma pequena operação e, ao longo dos anos, expandimos nossa presença com duas lojas estrategicamente localizadas para melhor atender nossos clientes. Cada uniforme que produzimos carrega nosso compromisso com a qualidade e a dedicação de nossa equipe.
                     </p>
-                    <p class="text-lg text-[#002164]/80 mb-10 leading-relaxed">
+                    <p class="text-base lg:text-lg text-[#002164]/80 mb-6 leading-relaxed">
                         Hoje, somos reconhecidos no mercado por nossa capacidade de personalização, prazos de entrega e atenção aos detalhes que fazem a diferença na imagem profissional de nossos clientes.
                     </p>
-                    <a href="{{ route('contato') }}" class="inline-flex items-center gap-2 bg-[#002164] text-[#FFD217] px-8 py-4 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105">
+                    <a href="{{ route('contato') }}" class="inline-flex items-center gap-2 bg-[#002164] text-[#FFD217] px-6 py-3 rounded-xl hover:bg-[#002164]/90 transition-all font-semibold text-sm lg:text-base shadow-xl hover:shadow-2xl transform hover:scale-105">
                         Entre em Contato
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -119,9 +119,9 @@
                     </a>
                 </div>
                 <div class="hidden lg:block relative">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-orange-500/20 rounded-3xl blur-3xl transform -rotate-6"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#FFD217]/35 via-[#FFD217]/15 to-transparent rounded-3xl blur-3xl transform -rotate-6"></div>
                     <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-orange-500 rounded-3xl opacity-20 blur-2xl"></div>
+                        <div class="absolute -inset-4 bg-gradient-to-r from-[#FFD217] via-[#FFD217]/70 to-transparent rounded-3xl opacity-40 blur-2xl"></div>
                         <img src="{{ asset('imagem/06.PNG') }}" alt="Nossa História" class="relative rounded-3xl shadow-2xl transform hover:scale-105 transition duration-700 border-4 border-white/10">
                     </div>
                 </div>
@@ -130,14 +130,14 @@
     </section>
 
     <!-- Missão, Visão e Valores -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     NOSSA IDENTIDADE
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Missão, Visão e Valores</h2>
-                <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Missão, Visão e Valores</h2>
+                <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Os pilares que guiam nosso trabalho e definem nosso compromisso com a excelência
                 </p>
             </div>
@@ -175,7 +175,7 @@
     </section>
 
     <!-- Nossas Lojas -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="text-center mb-20">
                 <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
@@ -303,45 +303,45 @@
     </section>
 
     <!-- Galeria de Fotos - Loja Matriz -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div class="text-center mb-14">
+                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     GALERIA
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-4">Galeria - Loja Matriz</h2>
-                <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-3">Galeria - Loja Matriz</h2>
+                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Conheça nossa loja matriz através das fotos
                 </p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 <button onclick="openImageModal('{{ asset('imagem/01.PNG') }}', 'Loja Matriz', 'Nossa loja matriz oferece um amplo espaço de atendimento e exposição de produtos.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/01.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/02.PNG') }}', 'Loja Matriz', 'Espaço moderno e acolhedor para melhor atendê-lo.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/02.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/05.PNG') }}', 'Loja Matriz', 'Nossa equipe mais experiente está pronta para atendê-lo.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/05.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/06.PNG') }}', 'Loja Matriz', 'Maior estoque de uniformes prontos para entrega.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/06.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/07.PNG') }}', 'Loja Matriz', 'Localizada no centro da cidade para sua comodidade.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/07.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/08.PNG') }}', 'Loja Matriz', 'Ambiente profissional e moderno.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/08.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
@@ -350,45 +350,45 @@
     </section>
 
     <!-- Galeria de Fotos - Loja Filial -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div class="text-center mb-14">
+                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     GALERIA
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-4">Galeria - Loja Filial</h2>
-                <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-3">Galeria - Loja Filial</h2>
+                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Conheça nossa loja filial através das fotos
                 </p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 <button onclick="openImageModal('{{ asset('imagem/01.PNG') }}', 'Loja Filial', 'Nossa loja filial em uma região estratégica para melhor atendê-lo.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/01.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/03.PNG') }}', 'Loja Filial', 'Ambiente moderno e acolhedor com o mesmo padrão de qualidade.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/03.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/04.PNG') }}', 'Loja Filial', 'Atendimento personalizado que caracteriza a Fábrica de Fardamento.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/04.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/05.PNG') }}', 'Loja Filial', 'Variedade de produtos e uniformes disponíveis.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/05.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/07.PNG') }}', 'Loja Filial', 'Espaço amplo para exposição e atendimento.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/07.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
                 <button onclick="openImageModal('{{ asset('imagem/08.PNG') }}', 'Loja Filial', 'Venha nos visitar e conhecer nossos produtos.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-white">
                         <img src="{{ asset('imagem/08.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </button>
@@ -397,14 +397,14 @@
     </section>
 
     <!-- Diferenciais -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     DIFERENCIAIS
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Nossos Diferenciais</h2>
-                <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-4">Nossos Diferenciais</h2>
+                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     O que nos torna a melhor escolha para sua empresa
                 </p>
             </div>

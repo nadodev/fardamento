@@ -13,7 +13,7 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased bg-[#FFD217] text-[#002164]">
+<body class="font-sans antialiased bg-white text-[#002164]">
     @yield('content')
 </body>
 </html>

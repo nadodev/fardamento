@@ -66,7 +66,7 @@
     </header>
 
     <!-- Product Details -->
-    <section class="py-12 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-10 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <nav class="flex items-center space-x-2 text-sm mb-8">
                 <a href="{{ route('home') }}" class="text-[#002164]/80 hover:text-[#002164] transition-colors">Início</a>
@@ -82,7 +82,7 @@
         </div>
     </section>
 
-    <section class="py-16 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-16 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12 mb-16">
                 <!-- Image Gallery -->
@@ -101,7 +101,7 @@
 
                 <!-- Product Info -->
                 <div>
-                    <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center gap-3 mb-3">
                         @if(in_array('matriz', $lojas))
                             <span class="px-3 py-1 bg-[#002164] text-[#FFD217] text-sm font-semibold rounded-lg">Loja Matriz</span>
                         @endif
@@ -109,30 +109,30 @@
                             <span class="px-3 py-1 bg-[#002164] text-[#FFD217] text-sm font-semibold rounded-lg">Loja Filial</span>
                         @endif
                     </div>
-                    <h1 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-4">{{ $produto->nome }}</h1>
-                    <div class="text-lg text-[#002164]/80 mb-6">
+                    <h1 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-3">{{ $produto->nome }}</h1>
+                    <div class="text-base lg:text-lg text-[#002164]/80 mb-5">
                         <span class="font-semibold text-[#002164]">Código:</span> {{ $produto->codigo }}
                     </div>
-                    <p class="text-lg text-[#002164]/90 leading-relaxed mb-8">{{ $produto->descricao }}</p>
+                    <p class="text-base lg:text-lg text-[#002164]/90 leading-relaxed mb-6">{{ $produto->descricao }}</p>
                     
                     <!-- Features -->
                     @if(count($caracteristicas) > 0)
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-[#002164] mb-4">Características</h3>
+                        <h3 class="text-lg lg:text-xl font-bold text-[#002164] mb-3">Características</h3>
                         <ul class="space-y-3">
                             @foreach($caracteristicas as $feature)
                                 <li class="flex items-start gap-3">
                                     <svg class="w-6 h-6 text-[#002164] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
-                                    <span class="text-[#002164]/90 text-lg">{{ $feature }}</span>
+                                    <span class="text-[#002164]/90 text-base lg:text-lg">{{ $feature }}</span>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
                     @endif
 
-                    <a href="#contato-produto" class="inline-flex items-center bg-[#002164] text-[#FFD217] px-10 py-5 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 gap-2">
+                    <a href="#contato-produto" class="inline-flex items-center bg-[#002164] text-[#FFD217] px-8 py-4 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-base lg:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 gap-2">
                         Solicitar Orçamento
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -144,15 +144,15 @@
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contato-produto" class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section id="contato-produto" class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-16">
-                    <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <div class="text-center mb-14">
+                    <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                         SOLICITE UM ORÇAMENTO
                     </div>
-                    <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Interessado neste Produto?</h2>
-                    <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Interessado neste Produto?</h2>
+                    <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                         Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas com um orçamento personalizado.
                     </p>
                 </div>
@@ -163,33 +163,33 @@
                         
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="nome" class="block text-[#002164] font-bold mb-3 text-lg">Nome Completo *</label>
+                                <label for="nome" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Nome Completo *</label>
                                 <input type="text" id="nome" name="nome" required class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="Seu nome completo">
                             </div>
                             <div>
-                                <label for="email" class="block text-[#002164] font-bold mb-3 text-lg">E-mail *</label>
+                                <label for="email" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">E-mail *</label>
                                 <input type="email" id="email" name="email" required class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="seu@email.com">
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="telefone" class="block text-[#002164] font-bold mb-3 text-lg">Telefone *</label>
+                                <label for="telefone" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Telefone *</label>
                                 <input type="tel" id="telefone" name="telefone" required class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="(00) 00000-0000">
                             </div>
                             <div>
-                                <label for="empresa" class="block text-[#002164] font-bold mb-3 text-lg">Empresa</label>
+                                <label for="empresa" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Empresa</label>
                                 <input type="text" id="empresa" name="empresa" class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="Nome da empresa">
                             </div>
                         </div>
                         <div>
-                            <label for="quantidade" class="block text-[#002164] font-bold mb-3 text-lg">Quantidade Aproximada</label>
+                            <label for="quantidade" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Quantidade Aproximada</label>
                             <input type="number" id="quantidade" name="quantidade" min="1" class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="Ex: 50 unidades">
                         </div>
                         <div>
-                            <label for="mensagem" class="block text-[#002164] font-bold mb-3 text-lg">Mensagem *</label>
+                            <label for="mensagem" class="block text-[#002164] font-bold mb-2 text-base lg:text-lg">Mensagem *</label>
                             <textarea id="mensagem" name="mensagem" rows="6" required class="w-full px-5 py-4 border-2 border-[#002164]/20 rounded-xl focus:ring-2 focus:ring-[#002164] focus:border-[#002164] transition-all resize-none bg-white hover:bg-[#FFD217]/10 text-[#002164] placeholder-[#002164]/50" placeholder="Conte-nos mais sobre sua necessidade..."></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-[#002164] text-[#FFD217] px-10 py-5 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-[1.02] duration-300">
+                        <button type="submit" class="w-full bg-[#002164] text-[#FFD217] px-8 py-4 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-base lg:text-lg shadow-xl hover:shadow-2xl transform hover:scale-[1.02] duration-300">
                             <span class="flex items-center justify-center gap-2">
                                 Enviar Solicitação
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

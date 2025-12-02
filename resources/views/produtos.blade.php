@@ -53,7 +53,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-[#FFD217] text-[#002164] py-32 overflow-hidden">
+    <section class="relative bg-white text-[#002164] py-24 overflow-hidden">
         <div class="absolute inset-0">
             <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
             <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
@@ -61,16 +61,16 @@
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <div class="inline-flex items-center gap-2 bg-[#002164]/20 backdrop-blur-md px-5 py-2.5 rounded-full text-sm font-semibold border border-[#002164]/30 mb-8">
+                <div class="inline-flex items-center gap-2 bg-[#002164]/20 backdrop-blur-md px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-[#002164]/30 mb-5">
                     <svg class="w-4 h-4 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                     </svg>
                     NOSSOS PRODUTOS
                 </div>
-                <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6 text-[#002164]">
+                <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-4 text-[#002164]">
                     Nossos <span class="text-[#002164]">Produtos</span>
                 </h1>
-                <p class="text-xl lg:text-2xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
+                <p class="text-lg lg:text-xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
                     Explore nossa linha completa de uniformes profissionais e encontre a solução perfeita para sua empresa.
                 </p>
             </div>
@@ -78,7 +78,7 @@
     </section>
 
     <!-- Products Grid -->
-    <section class="py-24 bg-[#FFD217] border-t-4 border-[#E6C000]">
+    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <!-- Filter Section -->
             <div class="mb-12">
