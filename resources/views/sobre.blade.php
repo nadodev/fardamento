@@ -83,10 +83,10 @@
                     </svg>
                     MAIS DE 20 ANOS DE EXCELÊNCIA
                 </div>
-                <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-5 text-[#002164]">
+                <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-4 text-[#002164]">
                     Sobre a <span class="text-[#002164]">Fábrica de Fardamento</span>
                 </h1>
-                <p class="text-lg lg:text-xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
+                <p class="text-base lg:text-lg text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
                     Conheça nossa história, valores e o compromisso que nos torna referência em uniformes profissionais no Brasil.
                 </p>
             </div>
@@ -136,8 +136,8 @@
                 <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     NOSSA IDENTIDADE
                 </div>
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Missão, Visão e Valores</h2>
-                <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-3">Missão, Visão e Valores</h2>
+                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Os pilares que guiam nosso trabalho e definem nosso compromisso com a excelência
                 </p>
             </div>
@@ -148,7 +148,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-[#002164] mb-4 text-center">Missão</h3>
+                    <h3 class="text-xl font-bold text-[#002164] mb-3 text-center">Missão</h3>
                     <p class="text-[#002164]/80 text-center leading-relaxed text-lg">Oferecer uniformes que unam funcionalidade, conforto e estilo, superando as expectativas de nossos clientes através da qualidade e inovação.</p>
                 </div>
                 <div class="group bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-[#002164]/20">
@@ -158,7 +158,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-[#002164] mb-4 text-center">Visão</h3>
+                    <h3 class="text-xl font-bold text-[#002164] mb-3 text-center">Visão</h3>
                     <p class="text-[#002164]/80 text-center leading-relaxed text-lg">Ser referência no mercado de uniformes profissionais, reconhecida pela inovação, qualidade e compromisso com a satisfação do cliente.</p>
                 </div>
                 <div class="group bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-[#002164]/20">
@@ -167,7 +167,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-[#002164] mb-4 text-center">Valores</h3>
+                    <h3 class="text-xl font-bold text-[#002164] mb-3 text-center">Valores</h3>
                     <p class="text-[#002164]/80 text-center leading-relaxed text-lg">Integridade, respeito, compromisso com a qualidade, sustentabilidade e valorização das pessoas.</p>
                 </div>
             </div>
@@ -181,8 +181,8 @@
                 <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-sm font-semibold mb-6">
                     NOSSAS UNIDADES
                 </div>
-                <h2 class="text-4xl lg:text-5xl font-extrabold text-[#002164] mb-6">Nossas Lojas</h2>
-                <p class="text-xl text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-4">Nossas Lojas</h2>
+                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Conheça nossas duas unidades estrategicamente localizadas para melhor atendê-lo
                 </p>
             </div>
@@ -198,8 +198,8 @@
                             <div class="w-2 h-2 bg-blue-700 rounded-full"></div>
                             <span class="text-sm font-semibold text-blue-700 uppercase tracking-wide">Loja Matriz</span>
                         </div>
-                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Loja Matriz</h3>
-                        <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Loja Matriz</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-base lg:text-lg">
                             Nossa loja matriz é o coração da Fábrica de Fardamento. Localizada no centro da cidade, oferece um amplo espaço de atendimento e exposição de produtos. Aqui você encontra nossa equipe mais experiente e nosso maior estoque de uniformes prontos para entrega.
                         </p>
                         <div class="space-y-4">
@@ -254,8 +254,8 @@
                             <div class="w-2 h-2 bg-orange-600 rounded-full"></div>
                             <span class="text-sm font-semibold text-orange-700 uppercase tracking-wide">Loja Filial</span>
                         </div>
-                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Loja Filial</h3>
-                        <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Loja Filial</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-base lg:text-lg">
                             Nossa loja filial foi inaugurada para melhor atender nossos clientes em uma região estratégica. Com um ambiente moderno e acolhedor, oferecemos o mesmo padrão de qualidade e atendimento personalizado que caracteriza a Fábrica de Fardamento.
                         </p>
                         <div class="space-y-4">
@@ -309,8 +309,8 @@
                 <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     GALERIA
                 </div>
-                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-3">Galeria - Loja Matriz</h2>
-                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-xl lg:text-2xl font-extrabold text-[#002164] mb-2">Galeria - Loja Matriz</h2>
+                <p class="text-sm lg:text-base text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Conheça nossa loja matriz através das fotos
                 </p>
             </div>
@@ -356,8 +356,8 @@
                 <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     GALERIA
                 </div>
-                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-3">Galeria - Loja Filial</h2>
-                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-xl lg:text-2xl font-extrabold text-[#002164] mb-2">Galeria - Loja Filial</h2>
+                <p class="text-sm lg:text-base text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Conheça nossa loja filial através das fotos
                 </p>
             </div>
@@ -403,8 +403,8 @@
                 <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     DIFERENCIAIS
                 </div>
-                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-4">Nossos Diferenciais</h2>
-                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-xl lg:text-2xl font-extrabold text-[#002164] mb-3">Nossos Diferenciais</h2>
+                <p class="text-sm lg:text-base text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     O que nos torna a melhor escolha para sua empresa
                 </p>
             </div>
@@ -465,8 +465,8 @@
             <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
         </div>
         <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">Pronto para Trabalhar Conosco?</h2>
-            <p class="text-xl mb-10 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
+            <h2 class="text-2xl lg:text-3xl font-extrabold mb-4">Pronto para Trabalhar Conosco?</h2>
+            <p class="text-base lg:text-lg mb-8 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
                 Entre em contato e descubra como podemos transformar a imagem da sua empresa com uniformes profissionais de alta qualidade.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">

@@ -67,10 +67,10 @@
                     </svg>
                     NOSSOS PRODUTOS
                 </div>
-                <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-4 text-[#002164]">
+                <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-3 text-[#002164]">
                     Nossos <span class="text-[#002164]">Produtos</span>
                 </h1>
-                <p class="text-lg lg:text-xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
+                <p class="text-base lg:text-lg text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
                     Explore nossa linha completa de uniformes profissionais e encontre a solução perfeita para sua empresa.
                 </p>
             </div>

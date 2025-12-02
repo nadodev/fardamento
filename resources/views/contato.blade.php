@@ -83,10 +83,10 @@
                     </svg>
                     ESTAMOS PRONTOS PARA ATENDER VOCÊ
                 </div>
-                <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-4 text-[#002164]">
+                <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-3 text-[#002164]">
                     Entre em <span class="text-[#002164]">Contato</span>
                 </h1>
-                <p class="text-lg lg:text-xl text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
+                <p class="text-base lg:text-lg text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
                     Visite-nos em uma de nossas lojas ou envie sua mensagem. Nossa equipe está pronta para ajudar você a encontrar o uniforme perfeito.
                 </p>
             </div>
@@ -100,8 +100,8 @@
                 <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                     NOSSAS UNIDADES
                 </div>
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Nossas Lojas</h2>
-                <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-3">Nossas Lojas</h2>
+                <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                     Visite-nos em uma de nossas unidades estrategicamente localizadas
                 </p>
             </div>
@@ -117,7 +117,7 @@
                             <div class="w-2 h-2 bg-[#002164] rounded-full"></div>
                             <span class="text-sm font-semibold text-[#002164] uppercase tracking-wide">Loja Matriz</span>
                         </div>
-                        <h3 class="text-3xl font-bold text-[#002164] mb-6">Loja Matriz</h3>
+                        <h3 class="text-2xl font-bold text-[#002164] mb-4">Loja Matriz</h3>
                         <div class="space-y-5">
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -170,7 +170,7 @@
                             <div class="w-2 h-2 bg-[#002164] rounded-full"></div>
                             <span class="text-sm font-semibold text-[#002164] uppercase tracking-wide">Loja Filial</span>
                         </div>
-                        <h3 class="text-3xl font-bold text-[#002164] mb-6">Loja Filial</h3>
+                        <h3 class="text-2xl font-bold text-[#002164] mb-4">Loja Filial</h3>
                         <div class="space-y-5">
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -223,8 +223,8 @@
                     <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                         ENVIE SUA MENSAGEM
                     </div>
-                    <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Envie sua Mensagem</h2>
-                    <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                    <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-3">Envie sua Mensagem</h2>
+                    <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                         Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.
                     </p>
                 </div>
@@ -283,8 +283,8 @@
             <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
         </div>
         <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-3xl lg:text-4xl font-extrabold mb-5">Precisa de Ajuda Imediata?</h2>
-            <p class="text-lg mb-8 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
+            <h2 class="text-2xl lg:text-3xl font-extrabold mb-4">Precisa de Ajuda Imediata?</h2>
+            <p class="text-base lg:text-lg mb-8 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
                 Entre em contato conosco agora mesmo. Nossa equipe está pronta para atender você.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">

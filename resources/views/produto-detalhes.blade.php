@@ -109,16 +109,16 @@
                             <span class="px-3 py-1 bg-[#002164] text-[#FFD217] text-sm font-semibold rounded-lg">Loja Filial</span>
                         @endif
                     </div>
-                    <h1 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-3">{{ $produto->nome }}</h1>
-                    <div class="text-base lg:text-lg text-[#002164]/80 mb-5">
+                    <h1 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-2">{{ $produto->nome }}</h1>
+                    <div class="text-sm lg:text-base text-[#002164]/80 mb-4">
                         <span class="font-semibold text-[#002164]">Código:</span> {{ $produto->codigo }}
                     </div>
-                    <p class="text-base lg:text-lg text-[#002164]/90 leading-relaxed mb-6">{{ $produto->descricao }}</p>
+                    <p class="text-sm lg:text-base text-[#002164]/90 leading-relaxed mb-5">{{ $produto->descricao }}</p>
                     
                     <!-- Features -->
                     @if(count($caracteristicas) > 0)
                     <div class="mb-8">
-                        <h3 class="text-lg lg:text-xl font-bold text-[#002164] mb-3">Características</h3>
+                        <h3 class="text-base lg:text-lg font-bold text-[#002164] mb-2">Características</h3>
                         <ul class="space-y-3">
                             @foreach($caracteristicas as $feature)
                                 <li class="flex items-start gap-3">
@@ -151,8 +151,8 @@
                     <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
                         SOLICITE UM ORÇAMENTO
                     </div>
-                    <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Interessado neste Produto?</h2>
-                    <p class="text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                    <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-3">Interessado neste Produto?</h2>
+                    <p class="text-base lg:text-lg text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
                         Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas com um orçamento personalizado.
                     </p>
                 </div>
