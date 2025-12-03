@@ -323,12 +323,18 @@
                 @if($matriz->fotos->isNotEmpty())
                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
                         @foreach($matriz->fotos as $foto)
+                            @php
+                                $caminhoFoto = $foto->caminho;
+                                if (!str_starts_with($caminhoFoto, 'storage/') && !str_starts_with($caminhoFoto, 'http://') && !str_starts_with($caminhoFoto, 'https://')) {
+                                    $caminhoFoto = 'storage/' . ltrim($caminhoFoto, '/');
+                                }
+                            @endphp
                             <button
-                                onclick="openImageModal('{{ asset($foto->caminho) }}', '{{ $foto->titulo ?? $matriz->nome }}', '{{ $foto->descricao ?? $matriz->descricao }}')"
+                                onclick="openImageModal('{{ asset($caminhoFoto) }}', '{{ $foto->titulo ?? $matriz->nome }}', '{{ $foto->descricao ?? $matriz->descricao }}')"
                                 class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer"
                             >
                                 <div class="aspect-square overflow-hidden bg-white">
-                                    <img src="{{ asset($foto->caminho) }}" alt="{{ $foto->titulo ?? $matriz->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                                    <img src="{{ asset($caminhoFoto) }}" alt="{{ $foto->titulo ?? $matriz->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                                 </div>
                             </button>
                         @endforeach
@@ -367,12 +373,18 @@
                 @if($filial->fotos->isNotEmpty())
                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
                         @foreach($filial->fotos as $foto)
+                            @php
+                                $caminhoFoto = $foto->caminho;
+                                if (!str_starts_with($caminhoFoto, 'storage/') && !str_starts_with($caminhoFoto, 'http://') && !str_starts_with($caminhoFoto, 'https://')) {
+                                    $caminhoFoto = 'storage/' . ltrim($caminhoFoto, '/');
+                                }
+                            @endphp
                             <button
-                                onclick="openImageModal('{{ asset($foto->caminho) }}', '{{ $foto->titulo ?? $filial->nome }}', '{{ $foto->descricao ?? $filial->descricao }}')"
+                                onclick="openImageModal('{{ asset($caminhoFoto) }}', '{{ $foto->titulo ?? $filial->nome }}', '{{ $foto->descricao ?? $filial->descricao }}')"
                                 class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer"
                             >
                                 <div class="aspect-square overflow-hidden bg-white">
-                                    <img src="{{ asset($foto->caminho) }}" alt="{{ $foto->titulo ?? $filial->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                                    <img src="{{ asset($caminhoFoto) }}" alt="{{ $foto->titulo ?? $filial->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                                 </div>
                             </button>
                         @endforeach

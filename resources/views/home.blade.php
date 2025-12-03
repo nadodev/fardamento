@@ -204,10 +204,14 @@
                             @foreach($empresa->fotos->take(4) as $index => $foto)
                                 @php
                                     $globalIndex = $startIndex + $index;
+                                    $caminhoFoto = $foto->caminho;
+                                    if (!str_starts_with($caminhoFoto, 'storage/') && !str_starts_with($caminhoFoto, 'http://') && !str_starts_with($caminhoFoto, 'https://')) {
+                                        $caminhoFoto = 'storage/' . ltrim($caminhoFoto, '/');
+                                    }
                                 @endphp
                                 <div class="group cursor-pointer" onclick="openGalleryModal({{ $globalIndex }})">
                                     <div class="relative h-72 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-500 border-2 border-[#FFD217]/20 hover:border-[#FFD217]">
-                                        <img src="{{ asset($foto->caminho) }}" alt="{{ $foto->titulo ?? $empresa->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <img src="{{ asset($caminhoFoto) }}" alt="{{ $foto->titulo ?? $empresa->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                         <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                             <div class="absolute bottom-0 left-0 right-0 p-5">
                                                 <h4 class="text-lg font-bold text-[#FFD217] mb-1">{{ $foto->titulo ?? $empresa->nome }}</h4>

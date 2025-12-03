@@ -5,7 +5,7 @@
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <nav class="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
             <a href="{{ route('home') }}" class="flex items-center space-x-2 md:space-x-3 group">
-                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamento" class="h-10 md:h-14 w-auto group-hover:scale-105 transition-transform">
+                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamentos" class="h-10 md:h-14 w-auto group-hover:scale-105 transition-transform">
             </a>
             
             <div class="flex items-center space-x-4">

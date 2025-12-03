@@ -12,7 +12,7 @@
     <header class="bg-white shadow-sm border-b border-gray-200">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <a href="{{ route('dashboard') }}" class="flex items-center space-x-3">
-                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamento" class="h-10 w-auto">
+                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamentos" class="h-10 w-auto">
                 <span class="text-xl font-bold text-gray-900">Admin</span>
             </a>
             
