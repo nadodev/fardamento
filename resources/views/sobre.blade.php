@@ -302,99 +302,98 @@
         </div>
     </section>
 
-    <!-- Galeria de Fotos - Loja Matriz -->
-    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-14">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
-                    GALERIA
-                </div>
-                <h2 class="text-xl lg:text-2xl font-extrabold text-[#002164] mb-2">Galeria - Loja Matriz</h2>
-                <p class="text-sm lg:text-base text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
-                    Conheça nossa loja matriz através das fotos
-                </p>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <button onclick="openImageModal('{{ asset('imagem/01.PNG') }}', 'Loja Matriz', 'Nossa loja matriz oferece um amplo espaço de atendimento e exposição de produtos.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/01.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/02.PNG') }}', 'Loja Matriz', 'Espaço moderno e acolhedor para melhor atendê-lo.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/02.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/05.PNG') }}', 'Loja Matriz', 'Nossa equipe mais experiente está pronta para atendê-lo.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/05.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/06.PNG') }}', 'Loja Matriz', 'Maior estoque de uniformes prontos para entrega.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/06.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/07.PNG') }}', 'Loja Matriz', 'Localizada no centro da cidade para sua comodidade.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/07.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/08.PNG') }}', 'Loja Matriz', 'Ambiente profissional e moderno.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/08.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-            </div>
-        </div>
-    </section>
+    @php
+        $matriz = $empresas->firstWhere('tipo', 'matriz');
+        $filial = $empresas->firstWhere('tipo', 'filial');
+    @endphp
 
-    <!-- Galeria de Fotos - Loja Filial -->
-    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-14">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
-                    GALERIA
+    @if($matriz)
+        <!-- Galeria de Fotos - Loja Matriz -->
+        <section class="py-24 bg-white border-t-4 border-[#E6C000]">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-14">
+                    <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
+                        GALERIA
+                    </div>
+                    <h2 class="text-xl lg:text-2xl font-extrabold text-[#002164] mb-2">Galeria - {{ $matriz->nome }}</h2>
+                    <p class="text-sm lg:text-base text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                        Conheça nossa loja matriz através das fotos
+                    </p>
                 </div>
-                <h2 class="text-xl lg:text-2xl font-extrabold text-[#002164] mb-2">Galeria - Loja Filial</h2>
-                <p class="text-sm lg:text-base text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
-                    Conheça nossa loja filial através das fotos
-                </p>
+                @if($matriz->fotos->isNotEmpty())
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
+                        @foreach($matriz->fotos as $foto)
+                            <button
+                                onclick="openImageModal('{{ asset($foto->caminho) }}', '{{ $foto->titulo ?? $matriz->nome }}', '{{ $foto->descricao ?? $matriz->descricao }}')"
+                                class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer"
+                            >
+                                <div class="aspect-square overflow-hidden bg-white">
+                                    <img src="{{ asset($foto->caminho) }}" alt="{{ $foto->titulo ?? $matriz->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                                </div>
+                            </button>
+                        @endforeach
+                    </div>
+                @endif
+
+                <div class="max-w-3xl mx-auto mt-6 text-center space-y-1">
+                    <h3 class="text-xl font-semibold text-[#002164] mb-2">Informações da Loja Matriz</h3>
+                    @if($matriz->endereco)
+                        <p class="text-sm text-[#002164]/80"><span class="font-semibold">Endereço:</span> {{ $matriz->endereco }}</p>
+                    @endif
+                    @if($matriz->telefone)
+                        <p class="text-sm text-[#002164]/80"><span class="font-semibold">Telefone:</span> {{ $matriz->telefone }}</p>
+                    @endif
+                    @if($matriz->horario_funcionamento)
+                        <p class="text-sm text-[#002164]/80"><span class="font-semibold">Horário:</span> {{ $matriz->horario_funcionamento }}</p>
+                    @endif
+                </div>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <button onclick="openImageModal('{{ asset('imagem/01.PNG') }}', 'Loja Filial', 'Nossa loja filial em uma região estratégica para melhor atendê-lo.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/01.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </section>
+    @endif
+
+    @if($filial)
+        <!-- Galeria de Fotos - Loja Filial -->
+        <section class="py-24 bg-white border-t-4 border-[#E6C000]">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-14">
+                    <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
+                        GALERIA
                     </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/03.PNG') }}', 'Loja Filial', 'Ambiente moderno e acolhedor com o mesmo padrão de qualidade.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/03.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <h2 class="text-xl lg:text-2xl font-extrabold text-[#002164] mb-2">Galeria - {{ $filial->nome }}</h2>
+                    <p class="text-sm lg:text-base text-[#002164]/80 max-w-3xl mx-auto leading-relaxed">
+                        Conheça nossa loja filial através das fotos
+                    </p>
+                </div>
+                @if($filial->fotos->isNotEmpty())
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
+                        @foreach($filial->fotos as $foto)
+                            <button
+                                onclick="openImageModal('{{ asset($foto->caminho) }}', '{{ $foto->titulo ?? $filial->nome }}', '{{ $foto->descricao ?? $filial->descricao }}')"
+                                class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer"
+                            >
+                                <div class="aspect-square overflow-hidden bg-white">
+                                    <img src="{{ asset($foto->caminho) }}" alt="{{ $foto->titulo ?? $filial->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                                </div>
+                            </button>
+                        @endforeach
                     </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/04.PNG') }}', 'Loja Filial', 'Atendimento personalizado que caracteriza a Fábrica de Fardamento.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/04.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/05.PNG') }}', 'Loja Filial', 'Variedade de produtos e uniformes disponíveis.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/05.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/07.PNG') }}', 'Loja Filial', 'Espaço amplo para exposição e atendimento.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/07.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
-                <button onclick="openImageModal('{{ asset('imagem/08.PNG') }}', 'Loja Filial', 'Venha nos visitar e conhecer nossos produtos.')" class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div class="aspect-square overflow-hidden bg-white">
-                        <img src="{{ asset('imagem/08.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                </button>
+                @endif
+
+                <div class="max-w-3xl mx-auto mt-6 text-center space-y-1">
+                    <h3 class="text-xl font-semibold text-[#002164] mb-2">Informações da Loja Filial</h3>
+                    @if($filial->endereco)
+                        <p class="text-sm text-[#002164]/80"><span class="font-semibold">Endereço:</span> {{ $filial->endereco }}</p>
+                    @endif
+                    @if($filial->telefone)
+                        <p class="text-sm text-[#002164]/80"><span class="font-semibold">Telefone:</span> {{ $filial->telefone }}</p>
+                    @endif
+                    @if($filial->horario_funcionamento)
+                        <p class="text-sm text-[#002164]/80"><span class="font-semibold">Horário:</span> {{ $filial->horario_funcionamento }}</p>
+                    @endif
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <!-- Diferenciais -->
     <section class="py-24 bg-white border-t-4 border-[#E6C000]">

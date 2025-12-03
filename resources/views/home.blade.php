@@ -112,35 +112,52 @@
             </div>
         </div>
     </section>
-
-    <!-- Estatísticas -->
-    <section class="py-20 bg-white border-t-4 border-[#E6C000]">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="text-center group">
-                    <div class="text-5xl font-extrabold text-[#002164] mb-3 group-hover:scale-110 transition-transform">+20</div>
-                    <div class="text-[#002164]/80 font-semibold text-lg">Anos de Experiência</div>
-                    <div class="mt-2 h-1 w-0 bg-[#002164] group-hover:w-full transition-all duration-500 mx-auto"></div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-5xl font-extrabold text-[#002164] mb-3 group-hover:scale-110 transition-transform">+500</div>
-                    <div class="text-[#002164]/80 font-semibold text-lg">Empresas Parceiras</div>
-                    <div class="mt-2 h-1 w-0 bg-[#002164] group-hover:w-full transition-all duration-500 mx-auto"></div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-5xl font-extrabold text-[#002164] mb-3 group-hover:scale-110 transition-transform">+50k</div>
-                    <div class="text-[#002164]/80 font-semibold text-lg">Peças Produzidas</div>
-                    <div class="mt-2 h-1 w-0 bg-[#002164] group-hover:w-full transition-all duration-500 mx-auto"></div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-5xl font-extrabold text-[#002164] mb-3 group-hover:scale-110 transition-transform">2</div>
-                    <div class="text-[#002164]/80 font-semibold text-lg">Lojas Estratégicas</div>
-                    <div class="mt-2 h-1 w-0 bg-[#002164] group-hover:w-full transition-all duration-500 mx-auto"></div>
-                </div>
+ <!-- Produtos -->
+ <section id="produtos" class="py-24 bg-white border-t-4 border-[#E6C000]">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
+                NOSSOS PRODUTOS
             </div>
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Nossos Produtos</h2>
+            <p class="text-lg text-[#002164]/80 max-w-2xl mx-auto">Explore nossa linha completa de uniformes profissionais</p>
         </div>
-    </section>
-
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            @forelse($produtos as $produto)
+                <a href="{{ route('produto.detalhes', $produto->slug) }}" class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
+                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                        @php
+                            $imagens = [
+                                'uniformes-sociais' => '02.PNG',
+                                'epis' => '03.PNG',
+                                'saude-beleza' => '04.PNG',
+                                'personalizados' => '05.PNG',
+                            ];
+                            $imagem = $imagens[$produto->slug] ?? '02.PNG';
+                        @endphp
+                        <img src="{{ asset('imagem/' . $imagem) }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-end p-6">
+                        <p class="text-[#FFD217] font-semibold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 mb-2">{{ $produto->nome }}</p>
+                        <p class="text-[#FFD217]/90 text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Código: {{ $produto->codigo }}</p>
+                    </div>
+                </a>
+            @empty
+                <div class="col-span-4 text-center py-12 text-[#002164]/60">
+                    Nenhum produto disponível no momento.
+                </div>
+            @endforelse
+        </div>
+        <div class="text-center">
+            <a href="{{ route('produtos') }}" class="inline-flex items-center bg-[#002164] text-[#FFD217] px-10 py-5 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-lg shadow-2xl hover:shadow-[#002164]/50 transform hover:scale-105 gap-2">
+                Ver Todos os Produtos
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
     <!-- Sobre a Empresa -->
     <section class="py-24 bg-[#002164] text-[#FFD217] border-t-4 border-[#E6C000] relative overflow-hidden">
         <!-- Background Effects -->
@@ -152,97 +169,78 @@
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-14">
                 <div class="inline-block bg-[#FFD217]/20 text-[#FFD217] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 border border-[#FFD217]/30">
-                    CONHEÇA NOSSA EMPRESA
+                    CONHEÇA NOSSAS LOJAS
                 </div>
-                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">Fábrica de Fardamento</h2>
+                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">Fábrica de Fardamentos</h2>
                 <p class="text-lg lg:text-xl text-[#FFD217]/90 max-w-4xl mx-auto leading-relaxed mb-6">
-                    Desde 2004, somos referência em uniformes profissionais e equipamentos de proteção individual (EPI's). 
-                    Com duas lojas estrategicamente localizadas, oferecemos qualidade, conforto e durabilidade para transformar 
-                    a imagem da sua empresa.
+                    Atendemos com diversas unidades para oferecer praticidade e proximidade para a sua empresa.
                 </p>
             </div>
 
-            <!-- Galeria de Fotos por Loja -->
             @php
-                $galeriaSP = [
-                    ['img' => '1.jpg', 'titulo' => 'Loja São Paulo - Exterior', 'descricao' => 'Nossa unidade em São Paulo com fachada moderna e acolhedora'],
-                    ['img' => '2.jpg', 'titulo' => 'Loja São Paulo - Interior', 'descricao' => 'Amplo espaço interno com exposição organizada'],
-                    ['img' => '3.jpg', 'titulo' => 'Loja São Paulo - Produtos', 'descricao' => 'Variedade completa de uniformes profissionais'],
-                    ['img' => '4.jpg', 'titulo' => 'Loja São Paulo - Showroom', 'descricao' => 'Showroom moderno e bem organizado'],
-                ];
-                
-                $galeriaPE = [
-                    ['img' => '1.jpg', 'titulo' => 'Loja Pernambuco - Exterior', 'descricao' => 'Nossa unidade em Pernambuco com estrutura completa'],
-                    ['img' => '2.jpg', 'titulo' => 'Loja Pernambuco - Interior', 'descricao' => 'Espaço amplo para melhor atendimento'],
-                    ['img' => '3.jpg', 'titulo' => 'Loja Pernambuco - Produtos', 'descricao' => 'Ampla variedade de uniformes e EPI\'s'],
-                    ['img' => '5.jpg', 'titulo' => 'Loja Pernambuco - EPI\'s', 'descricao' => 'Equipamentos de proteção individual de alta qualidade'],
-                ];
-                
-                $galeriaCompleta = array_merge($galeriaSP, $galeriaPE);
+                // Matriz sempre primeiro, depois as demais empresas
+                $empresasOrdenadas = $empresas->sortBy(function ($empresa) {
+                    return $empresa->tipo === 'matriz' ? 0 : 1;
+                })->values();
+
+                $startIndex = 0;
             @endphp
 
-            <!-- Loja São Paulo -->
-            <div class="mb-16">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-1 flex-1 bg-[#FFD217]/30"></div>
-                    <div class="text-center">
-                        <div class="inline-block bg-[#FFD217]/20 text-[#FFD217] px-6 py-2 rounded-full text-sm font-semibold mb-3 border border-[#FFD217]/30">
-                            LOJA SÃO PAULO
-                        </div>
-                        <h3 class="text-3xl lg:text-4xl font-extrabold text-[#FFD217]">Nossa Unidade em São Paulo</h3>
-                    </div>
-                    <div class="h-1 flex-1 bg-[#FFD217]/30"></div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    @foreach($galeriaSP as $index => $foto)
-                        <div class="group cursor-pointer" onclick="openGalleryModal({{ $index }})">
-                            <div class="relative h-72 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-500 border-2 border-[#FFD217]/20 hover:border-[#FFD217]">
-                                <img src="{{ asset('imagem/' . $foto['img']) }}" alt="{{ $foto['titulo'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <div class="absolute bottom-0 left-0 right-0 p-5">
-                                        <h4 class="text-lg font-bold text-[#FFD217] mb-1">{{ $foto['titulo'] }}</h4>
-                                        <p class="text-sm text-[#FFD217]/90">{{ $foto['descricao'] }}</p>
-                                    </div>
-                                </div>
+            @foreach($empresasOrdenadas as $empresa)
+                <div class="mb-12">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="h-1 flex-1 bg-[#FFD217]/30"></div>
+                        <div class="text-center">
+                            <div class="inline-block bg-[#FFD217]/20 text-[#FFD217] px-6 py-2 rounded-full text-sm font-semibold mb-3 border border-[#FFD217]/30">
+                                {{ strtoupper($empresa->tipo) }}
                             </div>
+                            <h3 class="text-3xl lg:text-4xl font-extrabold text-[#FFD217]">{{ $empresa->nome }}</h3>
                         </div>
-                    @endforeach
-                </div>
-            </div>
+                        <div class="h-1 flex-1 bg-[#FFD217]/30"></div>
+                    </div>
 
-            <!-- Loja Pernambuco -->
-            <div class="mb-12">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-1 flex-1 bg-[#FFD217]/30"></div>
-                    <div class="text-center">
-                        <div class="inline-block bg-[#FFD217]/20 text-[#FFD217] px-6 py-2 rounded-full text-sm font-semibold mb-3 border border-[#FFD217]/30">
-                            LOJA PERNAMBUCO
-                        </div>
-                        <h3 class="text-3xl lg:text-4xl font-extrabold text-[#FFD217]">Nossa Unidade em Pernambuco</h3>
-                    </div>
-                    <div class="h-1 flex-1 bg-[#FFD217]/30"></div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    @foreach($galeriaPE as $index => $foto)
-                        @php
-                            $globalIndex = count($galeriaSP) + $index;
-                        @endphp
-                        <div class="group cursor-pointer" onclick="openGalleryModal({{ $globalIndex }})">
-                            <div class="relative h-72 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-500 border-2 border-[#FFD217]/20 hover:border-[#FFD217]">
-                                <img src="{{ asset('imagem/' . $foto['img']) }}" alt="{{ $foto['titulo'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <div class="absolute bottom-0 left-0 right-0 p-5">
-                                        <h4 class="text-lg font-bold text-[#FFD217] mb-1">{{ $foto['titulo'] }}</h4>
-                                        <p class="text-sm text-[#FFD217]/90">{{ $foto['descricao'] }}</p>
+                    @if($empresa->fotos->isNotEmpty())
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                            @foreach($empresa->fotos->take(4) as $index => $foto)
+                                @php
+                                    $globalIndex = $startIndex + $index;
+                                @endphp
+                                <div class="group cursor-pointer" onclick="openGalleryModal({{ $globalIndex }})">
+                                    <div class="relative h-72 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-500 border-2 border-[#FFD217]/20 hover:border-[#FFD217]">
+                                        <img src="{{ asset($foto->caminho) }}" alt="{{ $foto->titulo ?? $empresa->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                            <div class="absolute bottom-0 left-0 right-0 p-5">
+                                                <h4 class="text-lg font-bold text-[#FFD217] mb-1">{{ $foto->titulo ?? $empresa->nome }}</h4>
+                                                @if($foto->descricao)
+                                                    <p class="text-sm text-[#FFD217]/90">{{ $foto->descricao }}</p>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    @endforeach
+
+                        @php
+                            // soma todas as fotos dessa empresa para manter o índice global em sincronia com o modal
+                            $startIndex += $empresa->fotos->count();
+                        @endphp
+                    @endif
+
+                    <div class="max-w-3xl mx-auto mt-6 text-center space-y-1">
+                        <h4 class="text-xl font-semibold mb-2">Informações da Loja</h4>
+                        @if($empresa->endereco)
+                            <p class="text-sm"><span class="font-semibold">Endereço:</span> {{ $empresa->endereco }}</p>
+                        @endif
+                        @if($empresa->telefone)
+                            <p class="text-sm"><span class="font-semibold">Telefone:</span> {{ $empresa->telefone }}</p>
+                        @endif
+                        @if($empresa->horario_funcionamento)
+                            <p class="text-sm"><span class="font-semibold">Horário:</span> {{ $empresa->horario_funcionamento }}</p>
+                        @endif
+                    </div>
                 </div>
-            </div>
+            @endforeach
 
             <!-- Modal Lightbox -->
             <div id="gallery-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/95 backdrop-blur-sm">
@@ -329,53 +327,6 @@
         </div>
     </section>
 
-    <!-- Produtos -->
-    <section id="produtos" class="py-24 bg-white border-t-4 border-[#E6C000]">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
-                    NOSSOS PRODUTOS
-                </div>
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Nossos Produtos</h2>
-                <p class="text-lg text-[#002164]/80 max-w-2xl mx-auto">Explore nossa linha completa de uniformes profissionais</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                @forelse($produtos as $produto)
-                    <a href="{{ route('produto.detalhes', $produto->slug) }}" class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-                        <div class="aspect-square overflow-hidden bg-[#FFD217]">
-                            @php
-                                $imagens = [
-                                    'uniformes-sociais' => '02.PNG',
-                                    'epis' => '03.PNG',
-                                    'saude-beleza' => '04.PNG',
-                                    'personalizados' => '05.PNG',
-                                ];
-                                $imagem = $imagens[$produto->slug] ?? '02.PNG';
-                            @endphp
-                            <img src="{{ asset('imagem/' . $imagem) }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-end p-6">
-                            <p class="text-[#FFD217] font-semibold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 mb-2">{{ $produto->nome }}</p>
-                            <p class="text-[#FFD217]/90 text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Código: {{ $produto->codigo }}</p>
-                        </div>
-                    </a>
-                @empty
-                    <div class="col-span-4 text-center py-12 text-[#002164]/60">
-                        Nenhum produto disponível no momento.
-                    </div>
-                @endforelse
-            </div>
-            <div class="text-center">
-                <a href="{{ route('produtos') }}" class="inline-flex items-center bg-[#002164] text-[#FFD217] px-10 py-5 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-lg shadow-2xl hover:shadow-[#002164]/50 transform hover:scale-105 gap-2">
-                    Ver Todos os Produtos
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- História -->
     <section id="sobre" class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
@@ -438,100 +389,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Depoimentos -->
-    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-[#002164]/20 text-[#002164] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
-                    DEPOIMENTOS
-                </div>
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4">Clientes Satisfeitos</h2>
-                <p class="text-lg text-[#002164]/80 max-w-2xl mx-auto">Depoimentos de quem confia na qualidade Fábrica de Fardamento</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-[#002164]/20">
-                    <div class="flex items-center mb-6">
-                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl mr-5 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
-                            AS
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 text-lg">Ana Paula S.</h4>
-                            <div class="flex text-yellow-400 mt-2">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic leading-relaxed text-lg">"Os uniformes da Fábrica de Fardamento superaram nossas expectativas em qualidade e durabilidade. Nossa equipe está muito satisfeita!"</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="flex items-center mb-6">
-                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-2xl mr-5 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
-                            JC
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 text-lg">João Carlos M.</h4>
-                            <div class="flex text-yellow-400 mt-2">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic leading-relaxed text-lg">"Atendimento impecável e entrega dentro do prazo. Recomendo a Fábrica de Fardamento para todas as empresas que buscam excelência."</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="flex items-center mb-6">
-                        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl mr-5 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
-                            MP
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 text-lg">Maria Eduarda P.</h4>
-                            <div class="flex text-yellow-400 mt-2">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic leading-relaxed text-lg">"A personalização dos uniformes ficou perfeita! A Fábrica de Fardamento realmente entende as necessidades de cada cliente."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-24 bg-[#002164] text-[#FFD217] relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-            <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
-        </div>
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-3xl lg:text-4xl font-extrabold mb-5">Pronto para Transformar a Imagem da Sua Empresa?</h2>
-            <p class="text-lg mb-8 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
-                Nossa equipe está pronta para criar uniformes personalizados que refletem a identidade da sua marca. Solicite um orçamento sem compromisso!
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ route('contato') }}" class="group bg-[#FFD217] text-[#002164] px-10 py-5 rounded-xl hover:bg-[#FFD217]/90 transition-all font-bold text-lg shadow-2xl hover:shadow-[#FFD217]/50 transform hover:scale-105 inline-flex items-center justify-center gap-2">
-                    Solicitar Orçamento
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </a>
-                <a href="{{ route('sobre') }}" class="bg-[#FFD217]/10 backdrop-blur-md text-[#FFD217] px-10 py-5 rounded-xl hover:bg-[#FFD217]/20 transition-all font-semibold text-lg border-2 border-[#FFD217]/30 hover:border-[#FFD217]/50 inline-flex items-center justify-center">
-                    Conheça Nossa História
-                </a>
-            </div>
-        </div>
-    </section>
+ 
 
     <!-- Footer -->
     <footer class="bg-[#002164] text-[#FFD217] py-16 border-t-4 border-[#E6C000]">
@@ -635,18 +493,18 @@
         });
 
         // Gallery Modal Functions
-        const galleryImages = [
-            // Loja São Paulo
-            {img: '{{ asset("imagem/1.jpg") }}', titulo: 'Loja São Paulo - Exterior', descricao: 'Nossa unidade em São Paulo com fachada moderna e acolhedora'},
-            {img: '{{ asset("imagem/2.jpg") }}', titulo: 'Loja São Paulo - Interior', descricao: 'Amplo espaço interno com exposição organizada'},
-            {img: '{{ asset("imagem/3.jpg") }}', titulo: 'Loja São Paulo - Produtos', descricao: 'Variedade completa de uniformes profissionais'},
-            {img: '{{ asset("imagem/4.jpg") }}', titulo: 'Loja São Paulo - Showroom', descricao: 'Showroom moderno e bem organizado'},
-            // Loja Pernambuco
-            {img: '{{ asset("imagem/1.jpg") }}', titulo: 'Loja Pernambuco - Exterior', descricao: 'Nossa unidade em Pernambuco com estrutura completa'},
-            {img: '{{ asset("imagem/2.jpg") }}', titulo: 'Loja Pernambuco - Interior', descricao: 'Espaço amplo para melhor atendimento'},
-            {img: '{{ asset("imagem/3.jpg") }}', titulo: 'Loja Pernambuco - Produtos', descricao: 'Ampla variedade de uniformes e EPI\'s'},
-            {img: '{{ asset("imagem/5.jpg") }}', titulo: 'Loja Pernambuco - EPI\'s', descricao: 'Equipamentos de proteção individual de alta qualidade'},
-        ];
+        @php
+            $galleryImages = $empresas->flatMap(function ($empresa) {
+                return $empresa->fotos->map(function ($foto) use ($empresa) {
+                    return [
+                        'img' => asset($foto->caminho),
+                        'titulo' => $foto->titulo ?? $empresa->nome,
+                        'descricao' => $foto->descricao ?? $empresa->descricao,
+                    ];
+                });
+            })->values()->toArray();
+        @endphp
+        const galleryImages = @json($galleryImages);
         let currentImageIndex = 0;
 
         function openGalleryModal(index) {

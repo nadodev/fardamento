@@ -68,7 +68,55 @@
         </div>
     </form>
 
-    <!-- Fotos e Contatos serão adicionados em uma próxima etapa -->
+    {{-- Galeria de Fotos --}}
+    <div class="mt-10 bg-white rounded-lg shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold text-gray-900">Galeria de Fotos</h2>
+        </div>
+
+        {{-- Lista de fotos atuais --}}
+        @if($empresa->fotos->isNotEmpty())
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                @foreach($empresa->fotos as $foto)
+                    <div class="border rounded-lg overflow-hidden bg-gray-50">
+                        <div class="aspect-video bg-gray-200">
+                            <img src="{{ asset($foto->caminho) }}" alt="{{ $foto->titulo ?? $empresa->nome }}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 flex items-center justify-between">
+                            <div class="text-xs text-gray-600 truncate mr-2">
+                                {{ $foto->titulo ?? 'Sem título' }}
+                            </div>
+                            <form action="{{ route('admin.empresas.fotos.destroy', [$empresa, $foto]) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja remover esta foto?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 text-xs hover:text-red-800">
+                                    Remover
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p class="text-sm text-gray-500 mb-6">Nenhuma foto cadastrada ainda para esta empresa.</p>
+        @endif
+
+        {{-- Upload de novas fotos --}}
+        <form action="{{ route('admin.empresas.fotos.store', $empresa) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+            @csrf
+            <div>
+                <label for="fotos" class="block text-sm font-medium text-gray-700 mb-2">Adicionar fotos</label>
+                <input type="file" name="fotos[]" id="fotos" multiple accept="image/*" class="w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                <p class="mt-2 text-xs text-gray-500">Você pode selecionar múltiplas imagens. Formatos aceitos: JPG, PNG, WEBP. Tamanho máximo: 4 MB por arquivo.</p>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit" class="px-6 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors font-semibold">
+                    Enviar Fotos
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection
 
 

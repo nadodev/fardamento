@@ -10,16 +10,30 @@ use Illuminate\Support\Facades\Route;
 // Public Routes
 Route::get('/', function () {
     $produtos = Produto::where('ativo', true)->take(4)->get();
-    return view('home', compact('produtos'));
+    $empresas = Empresa::with(['fotos', 'contatos'])
+        ->where('ativo', true)
+        ->orderByRaw("CASE WHEN tipo = 'matriz' THEN 0 ELSE 1 END")
+        ->orderBy('id')
+        ->get();
+
+    return view('home', compact('produtos', 'empresas'));
 })->name('home');
 
 Route::get('/sobre', function () {
-    $empresas = Empresa::with(['fotos', 'contatos'])->where('ativo', true)->get();
+    $empresas = Empresa::with(['fotos', 'contatos'])
+        ->where('ativo', true)
+        ->orderByRaw("CASE WHEN tipo = 'matriz' THEN 0 ELSE 1 END")
+        ->orderBy('id')
+        ->get();
     return view('sobre', compact('empresas'));
 })->name('sobre');
 
 Route::get('/contato', function () {
-    $empresas = Empresa::with(['fotos', 'contatos'])->where('ativo', true)->get();
+    $empresas = Empresa::with(['fotos', 'contatos'])
+        ->where('ativo', true)
+        ->orderByRaw("CASE WHEN tipo = 'matriz' THEN 0 ELSE 1 END")
+        ->orderBy('id')
+        ->get();
     return view('contato', compact('empresas'));
 })->name('contato');
 
@@ -63,4 +77,10 @@ Route::middleware('auth')->group(function () {
         'update' => 'admin.empresas.update',
         'destroy' => 'admin.empresas.destroy',
     ]);
+
+    Route::post('admin/empresas/{empresa}/fotos', [EmpresaController::class, 'storeFoto'])
+        ->name('admin.empresas.fotos.store');
+
+    Route::delete('admin/empresas/{empresa}/fotos/{foto}', [EmpresaController::class, 'destroyFoto'])
+        ->name('admin.empresas.fotos.destroy');
 });
