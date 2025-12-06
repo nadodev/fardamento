@@ -15,6 +15,7 @@
 </head>
 <body class="font-sans antialiased bg-white text-[#002164]">
     @yield('content')
+    @include('layouts.footer')
 
     <!-- WhatsApp Flutuante Global -->
     <div id="whatsapp-floating" class="fixed bottom-4 right-4 z-50">
