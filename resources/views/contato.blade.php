@@ -219,7 +219,7 @@
     </section>
 
     <!-- Formulário de Contato -->
-    <section class="py-24 bg-white border-t-4 border-[#E6C000]">
+    <section id="formulario-contato" class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-14">
@@ -231,7 +231,14 @@
                         Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.
                     </p>
                 </div>
-                <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 border border-gray-100">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 border border-gray-100 relative">
+                    <!-- Overlay de Loading -->
+                    <div id="loading-overlay" class="hidden absolute inset-0 bg-white/90 backdrop-blur-sm rounded-2xl z-50 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="inline-block animate-spin rounded-full h-16 w-16 border-4 border-[#002164] border-t-transparent mb-4"></div>
+                            <p class="text-[#002164] font-semibold text-lg">Enviando mensagem...</p>
+                        </div>
+                    </div>
                     @if(session('success'))
                         <div class="mb-6 p-4 bg-green-100 border-l-4 border-green-500 text-green-700 rounded-lg">
                             <div class="flex items-center gap-2">
@@ -272,7 +279,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('contato.store') }}" method="POST" class="space-y-6">
+                    <form id="form-contato" action="{{ route('contato.store') }}" method="POST" class="space-y-6">
                         @csrf
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
@@ -324,8 +331,8 @@
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
-                        <button type="submit" class="w-full bg-[#002164] text-[#FFD217] px-8 py-4 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-base lg:text-lg shadow-xl hover:shadow-2xl transform hover:scale-[1.02] duration-300">
-                            <span class="flex items-center justify-center gap-2">
+                        <button type="submit" id="submit-button" class="w-full bg-[#002164] text-[#FFD217] px-8 py-4 rounded-xl hover:bg-[#002164]/90 transition-all font-bold text-base lg:text-lg shadow-xl hover:shadow-2xl transform hover:scale-[1.02] duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                            <span id="submit-text" class="flex items-center justify-center gap-2">
                                 Enviar Mensagem
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
@@ -398,6 +405,52 @@
                     });
                 });
             }
+
+            // Formulário de Contato - Loading e Scroll
+            const formContato = document.getElementById('form-contato');
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const formularioSection = document.getElementById('formulario-contato');
+            const submitButton = document.getElementById('submit-button');
+            const submitText = document.getElementById('submit-text');
+
+            if (formContato && loadingOverlay) {
+                formContato.addEventListener('submit', function(e) {
+                    // Mostra o overlay de loading
+                    loadingOverlay.classList.remove('hidden');
+                    
+                    // Desabilita o botão e formulário
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                    }
+                    if (submitText) {
+                        submitText.innerHTML = '<span class="flex items-center justify-center gap-2"><span class="inline-block animate-spin rounded-full h-5 w-5 border-2 border-[#FFD217] border-t-transparent"></span> Enviando...</span>';
+                    }
+                    
+                    formContato.style.pointerEvents = 'none';
+                    
+                    // Scroll suave para o topo do formulário
+                    setTimeout(function() {
+                        if (formularioSection) {
+                            formularioSection.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start' 
+                            });
+                        }
+                    }, 100);
+                });
+            }
+
+            // Scroll para o formulário se houver mensagens de sucesso/erro
+            @if(session('success') || session('error') || $errors->any())
+                setTimeout(function() {
+                    if (formularioSection) {
+                        formularioSection.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            @endif
         });
     </script>
 @endsection
