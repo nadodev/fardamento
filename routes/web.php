@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ProdutoController;
 use App\Models\Empresa;
@@ -25,25 +26,22 @@ Route::get('/sobre', function () {
         ->orderByRaw("CASE WHEN tipo = 'matriz' THEN 0 ELSE 1 END")
         ->orderBy('id')
         ->get();
+
     return view('sobre', compact('empresas'));
 })->name('sobre');
 
-Route::get('/contato', function () {
-    $empresas = Empresa::with(['fotos', 'contatos'])
-        ->where('ativo', true)
-        ->orderByRaw("CASE WHEN tipo = 'matriz' THEN 0 ELSE 1 END")
-        ->orderBy('id')
-        ->get();
-    return view('contato', compact('empresas'));
-})->name('contato');
+Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
+Route::post('/contato', [ContatoController::class, 'store'])->name('contato.store');
 
 Route::get('/produtos', function () {
     $produtos = Produto::where('ativo', true)->get();
+
     return view('produtos', compact('produtos'));
 })->name('produtos');
 
 Route::get('/produtos/{slug}', function ($slug) {
     $produto = Produto::where('slug', $slug)->where('ativo', true)->firstOrFail();
+
     return view('produto-detalhes', compact('produto'));
 })->name('produto.detalhes');
 
@@ -67,7 +65,7 @@ Route::middleware('auth')->group(function () {
         'update' => 'admin.produtos.update',
         'destroy' => 'admin.produtos.destroy',
     ]);
-    
+
     Route::resource('admin/empresas', EmpresaController::class)->names([
         'index' => 'admin.empresas.index',
         'create' => 'admin.empresas.create',

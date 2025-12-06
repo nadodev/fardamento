@@ -111,8 +111,21 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'contato@fardamentos.com.br'),
+        'name' => env('MAIL_FROM_NAME', 'Fábrica de Fardamentos'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Contact Form Destination Email
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the email address where contact form submissions
+    | will be sent. This should be configured in your .env file as
+    | MAIL_CONTATO_DESTINO.
+    |
+    */
+
+    'contato_destino' => env('MAIL_CONTATO_DESTINO'),
 
 ];
