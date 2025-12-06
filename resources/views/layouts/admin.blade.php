@@ -6,8 +6,13 @@
     <title>@yield('title', 'Admin - Fardamentos')</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
+    @if(app()->environment('local', 'development'))
+     <link rel="stylesheet" href="{{ asset('build/assets/app-DReUN16y.css') }}">
+    <script src="{{ asset('build/assets/app-CAiCLEjY.js') }}"></script>
+       
+ @else
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+    @endif</head>
 <body class="font-sans antialiased bg-gray-50">
     <header class="bg-white shadow-sm border-b border-gray-200">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">

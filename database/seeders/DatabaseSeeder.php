@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         // Criar usuário admin padrão
         User::create([
             'name' => 'Administrador',
-            'email' => 'admin@fardamentos.com.br',
-            'password' => bcrypt('admin123'),
+            'email' => 'venilton@fabricadefardamentos.com',
+            'password' => bcrypt('fabricadefardamentos123'),
         ]);
 
         // Seeders de dados

@@ -11,11 +11,11 @@
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" /> --}}
     <!-- Styles -->
     @if(app()->environment('local', 'development'))
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DReUN16y.css') }}">
-    @else
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DReUN16y.css') }}">
+     <link rel="stylesheet" href="{{ asset('build/assets/app-DReUN16y.css') }}">
     <script src="{{ asset('build/assets/app-CAiCLEjY.js') }}"></script>
+       
+ @else
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
 </head>
 <body class="font-sans antialiased bg-white text-[#002164]">
