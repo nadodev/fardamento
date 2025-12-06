@@ -11,7 +11,27 @@
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" /> --}}
 
     <!-- Styles -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if(app()->environment('local', 'development'))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @else
+        @php
+            $manifestPath = public_path('build/manifest.json');
+            $cssFile = null;
+            $jsFile = null;
+            
+            if (file_exists($manifestPath)) {
+                $manifest = json_decode(file_get_contents($manifestPath), true);
+                $cssFile = $manifest['resources/css/app.css']['file'] ?? null;
+                $jsFile = $manifest['resources/js/app.js']['file'] ?? null;
+            }
+        @endphp
+        @if($cssFile)
+            <link rel="stylesheet" href="{{ asset('build/' . $cssFile) }}">
+        @endif
+        @if($jsFile)
+            <script type="module" src="{{ asset('build/' . $jsFile) }}"></script>
+        @endif
+    @endif
 </head>
 <body class="font-sans antialiased bg-white text-[#002164]">
     @yield('content')
