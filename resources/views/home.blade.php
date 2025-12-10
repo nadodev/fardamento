@@ -127,7 +127,8 @@
                 <a href="{{ route('produto.detalhes', $produto->slug) }}" class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
                     <div class="aspect-square overflow-hidden bg-[#FFD217]">
                         @php
-                            $imagemUrl = $produto->foto ? Storage::url($produto->foto) : null;
+                            $primeiraFoto = $produto->primeira_foto;
+                            $imagemUrl = $primeiraFoto ? $primeiraFoto->url : null;
                             if (!$imagemUrl) {
                                 $imagens = [
                                     'uniformes-sociais' => '02.PNG',

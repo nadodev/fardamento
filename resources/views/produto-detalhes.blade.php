@@ -5,9 +5,9 @@
         $lojas = $produto->lojas ?? [];
         $caracteristicas = $produto->caracteristicas ?? [];
         
-        // Se o produto tem foto, usar ela, senão usar imagens padrão
-        if ($produto->foto) {
-            $imagensProduto = [Storage::url($produto->foto)];
+        // Se o produto tem fotos, usar elas, senão usar imagens padrão
+        if ($produto->fotos->isNotEmpty()) {
+            $imagensProduto = $produto->fotos->map(fn($foto) => $foto->url)->toArray();
         } else {
             $imagens = [
                 'uniformes-sociais' => ['02.PNG', '01.PNG', '05.PNG'],

@@ -98,7 +98,8 @@
             <div id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @forelse($produtos as $produto)
                     @php
-                        $imagemUrl = $produto->foto ? Storage::url($produto->foto) : null;
+                        $primeiraFoto = $produto->primeira_foto;
+                        $imagemUrl = $primeiraFoto ? $primeiraFoto->url : null;
                         if (!$imagemUrl) {
                             $imagens = [
                                 'uniformes-sociais' => '02.PNG',

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Produto extends Model
 {
@@ -11,7 +12,6 @@ class Produto extends Model
         'slug',
         'descricao',
         'codigo',
-        'foto',
         'lojas',
         'caracteristicas',
         'ativo',
@@ -24,5 +24,15 @@ class Produto extends Model
             'caracteristicas' => 'array',
             'ativo' => 'boolean',
         ];
+    }
+
+    public function fotos(): HasMany
+    {
+        return $this->hasMany(ProdutoFoto::class)->orderBy('ordem');
+    }
+
+    public function getPrimeiraFotoAttribute(): ?ProdutoFoto
+    {
+        return $this->fotos()->first();
     }
 }

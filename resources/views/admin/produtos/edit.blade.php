@@ -23,22 +23,6 @@
             </div>
 
             <div class="md:col-span-2">
-                <label for="foto" class="block text-sm font-medium text-gray-700 mb-2">Foto do Produto</label>
-                @if($produto->foto)
-                    <div class="mb-4">
-                        <img src="{{ Storage::url($produto->foto) }}" alt="Foto atual" class="max-w-xs rounded-lg border border-gray-300 mb-2">
-                        <p class="text-sm text-gray-600">Foto atual</p>
-                    </div>
-                @endif
-                <input type="file" name="foto" id="foto" accept="image/jpeg,image/jpg,image/png,image/webp" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                <p class="mt-1 text-sm text-gray-500">Formatos aceitos: JPEG, JPG, PNG, WEBP. Tamanho máximo: 2MB. Deixe em branco para manter a foto atual.</p>
-                <div id="foto-preview" class="mt-4 hidden">
-                    <p class="text-sm text-gray-600 mb-2">Nova foto:</p>
-                    <img id="foto-preview-img" src="" alt="Preview" class="max-w-xs rounded-lg border border-gray-300">
-                </div>
-            </div>
-
-            <div class="md:col-span-2">
                 <label for="descricao" class="block text-sm font-medium text-gray-700 mb-2">Descrição *</label>
                 <textarea name="descricao" id="descricao" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('descricao', $produto->descricao) }}</textarea>
             </div>
@@ -81,20 +65,54 @@
         </div>
     </form>
 
-    <script>
-        document.getElementById('foto').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('foto-preview-img').src = e.target.result;
-                    document.getElementById('foto-preview').classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
-            } else {
-                document.getElementById('foto-preview').classList.add('hidden');
-            }
-        });
-    </script>
+    {{-- Galeria de Fotos --}}
+    <div class="mt-10 bg-white rounded-lg shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold text-gray-900">Galeria de Fotos</h2>
+        </div>
+
+        {{-- Lista de fotos atuais --}}
+        @if($produto->fotos->isNotEmpty())
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                @foreach($produto->fotos as $foto)
+                    <div class="border rounded-lg overflow-hidden bg-gray-50">
+                        <div class="aspect-video bg-gray-200">
+                            <img src="{{ $foto->url }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 flex items-center justify-between">
+                            <div class="text-xs text-gray-600 truncate mr-2">
+                                Foto {{ $loop->iteration }}
+                            </div>
+                            <form action="{{ route('admin.produtos.fotos.destroy', [$produto, $foto]) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja remover esta foto?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 text-xs hover:text-red-800">
+                                    Remover
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p class="text-sm text-gray-500 mb-6">Nenhuma foto cadastrada ainda para este produto.</p>
+        @endif
+
+        {{-- Upload de novas fotos --}}
+        <form action="{{ route('admin.produtos.fotos.store', $produto) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+            @csrf
+            <div>
+                <label for="fotos" class="block text-sm font-medium text-gray-700 mb-2">Adicionar fotos</label>
+                <input type="file" name="fotos[]" id="fotos" multiple accept="image/*" class="w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                <p class="mt-2 text-xs text-gray-500">Você pode selecionar múltiplas imagens. Formatos aceitos: JPG, PNG, WEBP. Tamanho máximo: 4 MB por arquivo.</p>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit" class="px-6 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors font-semibold">
+                    Enviar Fotos
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection
 
