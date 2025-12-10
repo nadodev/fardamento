@@ -93,13 +93,13 @@
             <div class="grid lg:grid-cols-2 gap-12 mb-16">
                 <!-- Image Gallery -->
                 <div>
-                    <div class="mb-4 rounded-2xl overflow-hidden shadow-xl">
-                        <img id="main-image" src="{{ $imagensProduto[0] }}" alt="{{ $produto->nome }}" class="w-full h-[500px] object-cover cursor-pointer" onclick="openImageModal(this.src, '{{ $produto->nome }}', '{{ $produto->descricao }}')">
+                    <div class="mb-4 rounded-2xl overflow-hidden shadow-xl bg-white flex items-center justify-center h-[500px]">
+                        <img id="main-image" src="{{ $imagensProduto[0] }}" alt="{{ $produto->nome }}" class="max-w-full max-h-full object-contain cursor-pointer" onclick="openImageModal(this.src, '{{ $produto->nome }}', '{{ $produto->descricao }}')">
                     </div>
                     <div class="grid grid-cols-3 gap-4">
                         @foreach($imagensProduto as $index => $image)
-                            <button onclick="changeMainImage('{{ $image }}')" class="rounded-xl overflow-hidden border-2 border-transparent hover:border-[#002164] transition-all transform hover:scale-105 focus:border-[#002164] focus:outline-none">
-                                <img src="{{ $image }}" alt="{{ $produto->nome }} - Imagem {{ $index + 1 }}" class="w-full h-24 object-cover">
+                            <button onclick="changeMainImage('{{ $image }}')" class="rounded-xl overflow-hidden border-2 border-transparent hover:border-[#002164] transition-all transform hover:scale-105 focus:border-[#002164] focus:outline-none bg-white flex items-center justify-center h-24">
+                                <img src="{{ $image }}" alt="{{ $produto->nome }} - Imagem {{ $index + 1 }}" class="max-w-full max-h-full object-contain">
                             </button>
                         @endforeach
                     </div>
