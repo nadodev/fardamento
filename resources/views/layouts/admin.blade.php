@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
     @if(app()->environment('local', 'development'))
-     <link rel="stylesheet" href="{{ asset('build/assets/app-DReUN16y.css') }}">
+     <link rel="stylesheet" href="{{ asset('build/assets/app-N-BW7NSB.css') }}">
     <script src="{{ asset('build/assets/app-CAiCLEjY.js') }}"></script>
        
  @else
