@@ -45,6 +45,9 @@ Route::get('/produtos/{slug}', function ($slug) {
     return view('produto-detalhes', compact('produto'));
 })->name('produto.detalhes');
 
+Route::post('/produtos/{produto}/orcamento', [ProdutoController::class, 'solicitarOrcamento'])
+    ->name('produto.orcamento');
+
 // Authentication Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrcamentoProdutoRequest;
 use App\Http\Requests\StoreProdutoRequest;
 use App\Http\Requests\UpdateProdutoRequest;
+use App\Mail\OrcamentoProdutoMail;
 use App\Models\Produto;
 use App\Models\ProdutoFoto;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -135,5 +139,61 @@ class ProdutoController extends Controller
 
         return redirect()->route('admin.produtos.edit', $produto)
             ->with('success', 'Foto removida com sucesso!');
+    }
+
+    public function solicitarOrcamento(OrcamentoProdutoRequest $request, Produto $produto): RedirectResponse
+    {
+        try {
+            $validated = $request->validated();
+            $emailDestino = config('mail.contato_destino');
+            $emailDestinoEnv = env('MAIL_CONTATO_DESTINO');
+
+            // Tenta usar o config primeiro, se vazio tenta o env diretamente
+            if (empty($emailDestino) && ! empty($emailDestinoEnv)) {
+                $emailDestino = $emailDestinoEnv;
+            }
+
+            if (empty($emailDestino)) {
+                Log::error('Email de destino não configurado para orçamento', [
+                    'config_mail_contato_destino' => config('mail.contato_destino'),
+                    'env_MAIL_CONTATO_DESTINO' => env('MAIL_CONTATO_DESTINO'),
+                ]);
+
+                return redirect()->route('produto.detalhes', $produto->slug)
+                    ->with('error', 'Erro na configuração do email. Por favor, tente novamente mais tarde.')
+                    ->withInput();
+            }
+
+            $mailable = new OrcamentoProdutoMail(
+                nome: $validated['nome'],
+                email: $validated['email'],
+                telefone: $validated['telefone'],
+                empresa: $validated['empresa'] ?? null,
+                quantidade: $validated['quantidade'] ?? null,
+                mensagem: $validated['mensagem'],
+                produtoNome: $validated['produto'],
+                produtoCodigo: $validated['codigo'],
+            );
+
+            Mail::to($emailDestino)->send($mailable);
+
+            Log::info('Email de orçamento enviado com sucesso', [
+                'email_destino' => $emailDestino,
+                'produto' => $produto->nome,
+            ]);
+
+            return redirect()->route('produto.detalhes', $produto->slug)
+                ->with('success', 'Solicitação de orçamento enviada com sucesso! Entraremos em contato em breve.');
+        } catch (\Exception $e) {
+            Log::error('Erro ao enviar email de orçamento', [
+                'erro' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'dados' => $request->all(),
+            ]);
+
+            return redirect()->route('produto.detalhes', $produto->slug)
+                ->with('error', 'Ocorreu um erro ao enviar a solicitação. Por favor, tente novamente ou entre em contato diretamente.')
+                ->withInput();
+        }
     }
 }
