@@ -20,6 +20,7 @@ class UpdateProdutoRequest extends FormRequest
             'nome' => ['required', 'string', 'max:255'],
             'descricao' => ['required', 'string'],
             'codigo' => ['required', 'string', 'max:255', 'unique:produtos,codigo,' . $this->route('produto')->id],
+            'foto' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
             'lojas' => ['nullable', 'array'],
             'lojas.*' => ['in:matriz,filial'],
             'caracteristicas' => ['nullable', 'array'],

@@ -98,18 +98,22 @@
             <div id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @forelse($produtos as $produto)
                     @php
-                        $imagens = [
-                            'uniformes-sociais' => '02.PNG',
-                            'epis' => '03.PNG',
-                            'saude-beleza' => '04.PNG',
-                            'personalizados' => '05.PNG',
-                        ];
-                        $imagem = $imagens[$produto->slug] ?? '02.PNG';
+                        $imagemUrl = $produto->foto ? Storage::url($produto->foto) : null;
+                        if (!$imagemUrl) {
+                            $imagens = [
+                                'uniformes-sociais' => '02.PNG',
+                                'epis' => '03.PNG',
+                                'saude-beleza' => '04.PNG',
+                                'personalizados' => '05.PNG',
+                            ];
+                            $imagem = $imagens[$produto->slug] ?? '02.PNG';
+                            $imagemUrl = asset('imagem/' . $imagem);
+                        }
                         $lojas = $produto->lojas ?? [];
                     @endphp
                     <a href="{{ route('produto.detalhes', $produto->slug) }}" class="product-item group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-[#002164]/20" data-loja="{{ implode(',', $lojas) }}">
                         <div class="h-64 bg-[#FFD217] overflow-hidden relative">
-                            <img src="{{ asset('imagem/' . $imagem) }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <img src="{{ $imagemUrl }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                             <div class="absolute top-3 right-3 flex gap-2">
                                 @if(in_array('matriz', $lojas))
                                     <span class="px-2 py-1 bg-[#002164] text-[#FFD217] text-xs font-semibold rounded-lg">Matriz</span>

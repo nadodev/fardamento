@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProdutoRequest;
 use App\Http\Requests\UpdateProdutoRequest;
 use App\Models\Produto;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -32,6 +33,10 @@ class ProdutoController extends Controller
             $data['caracteristicas'] = array_filter(
                 array_map('trim', explode("\n", $request->caracteristicas_text))
             );
+        }
+
+        if ($request->hasFile('foto')) {
+            $data['foto'] = $request->file('foto')->store('produtos', 'public');
         }
 
         Produto::create($data);
@@ -64,6 +69,13 @@ class ProdutoController extends Controller
             );
         }
 
+        if ($request->hasFile('foto')) {
+            if ($produto->foto) {
+                Storage::disk('public')->delete($produto->foto);
+            }
+            $data['foto'] = $request->file('foto')->store('produtos', 'public');
+        }
+
         $produto->update($data);
 
         return redirect()->route('admin.produtos.index')
@@ -72,6 +84,10 @@ class ProdutoController extends Controller
 
     public function destroy(Produto $produto): RedirectResponse
     {
+        if ($produto->foto) {
+            Storage::disk('public')->delete($produto->foto);
+        }
+
         $produto->delete();
 
         return redirect()->route('admin.produtos.index')

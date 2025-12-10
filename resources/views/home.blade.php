@@ -127,15 +127,19 @@
                 <a href="{{ route('produto.detalhes', $produto->slug) }}" class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
                     <div class="aspect-square overflow-hidden bg-[#FFD217]">
                         @php
-                            $imagens = [
-                                'uniformes-sociais' => '02.PNG',
-                                'epis' => '03.PNG',
-                                'saude-beleza' => '04.PNG',
-                                'personalizados' => '05.PNG',
-                            ];
-                            $imagem = $imagens[$produto->slug] ?? '02.PNG';
+                            $imagemUrl = $produto->foto ? Storage::url($produto->foto) : null;
+                            if (!$imagemUrl) {
+                                $imagens = [
+                                    'uniformes-sociais' => '02.PNG',
+                                    'epis' => '03.PNG',
+                                    'saude-beleza' => '04.PNG',
+                                    'personalizados' => '05.PNG',
+                                ];
+                                $imagem = $imagens[$produto->slug] ?? '02.PNG';
+                                $imagemUrl = asset('imagem/' . $imagem);
+                            }
                         @endphp
-                        <img src="{{ asset('imagem/' . $imagem) }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="{{ $imagemUrl }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-end p-6">
                         <p class="text-[#FFD217] font-semibold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 mb-2">{{ $produto->nome }}</p>
@@ -211,7 +215,7 @@
                                 @endphp
                                 <div class="group cursor-pointer" onclick="openGalleryModal({{ $globalIndex }})">
                                     <div class="relative h-72 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-500 border-2 border-[#FFD217]/20 hover:border-[#FFD217]">
-                                        <img src="{{ asset($caminhoFoto) }}" alt="{{ $foto->titulo ?? $empresa->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <img src="{{ asset($foto->caminho) }}" alt="{{ $foto->titulo ?? $empresa->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                         <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                             <div class="absolute bottom-0 left-0 right-0 p-5">
                                                 <h4 class="text-lg font-bold text-[#FFD217] mb-1">{{ $foto->titulo ?? $empresa->nome }}</h4>

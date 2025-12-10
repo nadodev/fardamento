@@ -7,7 +7,7 @@
 
     <h1 class="text-3xl font-bold text-gray-900 mb-6">Novo Produto</h1>
 
-    <form action="{{ route('admin.produtos.store') }}" method="POST" class="bg-white rounded-lg shadow p-6">
+    <form action="{{ route('admin.produtos.store') }}" method="POST" enctype="multipart/form-data" class="bg-white rounded-lg shadow p-6">
         @csrf
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -19,6 +19,15 @@
             <div>
                 <label for="codigo" class="block text-sm font-medium text-gray-700 mb-2">Código *</label>
                 <input type="text" name="codigo" id="codigo" value="{{ old('codigo') }}" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <div class="md:col-span-2">
+                <label for="foto" class="block text-sm font-medium text-gray-700 mb-2">Foto do Produto</label>
+                <input type="file" name="foto" id="foto" accept="image/jpeg,image/jpg,image/png,image/webp" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <p class="mt-1 text-sm text-gray-500">Formatos aceitos: JPEG, JPG, PNG, WEBP. Tamanho máximo: 2MB</p>
+                <div id="foto-preview" class="mt-4 hidden">
+                    <img id="foto-preview-img" src="" alt="Preview" class="max-w-xs rounded-lg border border-gray-300">
+                </div>
             </div>
 
             <div class="md:col-span-2">
@@ -63,5 +72,21 @@
             </button>
         </div>
     </form>
+
+    <script>
+        document.getElementById('foto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('foto-preview-img').src = e.target.result;
+                    document.getElementById('foto-preview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('foto-preview').classList.add('hidden');
+            }
+        });
+    </script>
 @endsection
 

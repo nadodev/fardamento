@@ -2,16 +2,22 @@
 
 @section('content')
     @php
-        $imagens = [
-            'uniformes-sociais' => ['02.PNG', '01.PNG', '05.PNG'],
-            'epis' => ['03.PNG', '01.PNG', '07.PNG'],
-            'saude-beleza' => ['04.PNG', '02.PNG', '06.PNG'],
-            'personalizados' => ['05.PNG', '03.PNG', '08.PNG'],
-        ];
-        $imagensProduto = $imagens[$produto->slug] ?? ['02.PNG', '01.PNG', '05.PNG'];
-        $imagensProduto = array_map(fn($img) => asset('imagem/' . $img), $imagensProduto);
         $lojas = $produto->lojas ?? [];
         $caracteristicas = $produto->caracteristicas ?? [];
+        
+        // Se o produto tem foto, usar ela, senão usar imagens padrão
+        if ($produto->foto) {
+            $imagensProduto = [Storage::url($produto->foto)];
+        } else {
+            $imagens = [
+                'uniformes-sociais' => ['02.PNG', '01.PNG', '05.PNG'],
+                'epis' => ['03.PNG', '01.PNG', '07.PNG'],
+                'saude-beleza' => ['04.PNG', '02.PNG', '06.PNG'],
+                'personalizados' => ['05.PNG', '03.PNG', '08.PNG'],
+            ];
+            $imagensProduto = $imagens[$produto->slug] ?? ['02.PNG', '01.PNG', '05.PNG'];
+            $imagensProduto = array_map(fn($img) => asset('imagem/' . $img), $imagensProduto);
+        }
     @endphp
 
     <!-- Header -->
