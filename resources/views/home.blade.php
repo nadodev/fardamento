@@ -125,7 +125,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             @forelse($produtos as $produto)
                 <a href="{{ route('produto.detalhes', $produto->slug) }}" class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217]">
+                    <div class="aspect-square overflow-hidden bg-[#FFD217] flex items-center justify-center">
                         @php
                             $primeiraFoto = $produto->primeira_foto;
                             $imagemUrl = $primeiraFoto ? $primeiraFoto->url : null;
@@ -140,7 +140,7 @@
                                 $imagemUrl = asset('imagem/' . $imagem);
                             }
                         @endphp
-                        <img src="{{ $imagemUrl }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="{{ $imagemUrl }}" alt="{{ $produto->nome }}" class="max-w-full max-h-full object-contain group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-end p-6">
                         <p class="text-[#FFD217] font-semibold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 mb-2">{{ $produto->nome }}</p>

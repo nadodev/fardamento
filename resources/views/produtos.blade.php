@@ -113,8 +113,8 @@
                         $lojas = $produto->lojas ?? [];
                     @endphp
                     <a href="{{ route('produto.detalhes', $produto->slug) }}" class="product-item group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-[#002164]/20" data-loja="{{ implode(',', $lojas) }}">
-                        <div class="h-64 bg-[#FFD217] overflow-hidden relative">
-                            <img src="{{ $imagemUrl }}" alt="{{ $produto->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="h-64 bg-[#FFD217] overflow-hidden relative flex items-center justify-center">
+                            <img src="{{ $imagemUrl }}" alt="{{ $produto->nome }}" class="max-w-full max-h-full object-contain group-hover:scale-110 transition duration-700">
                             <div class="absolute top-3 right-3 flex gap-2">
                                 @if(in_array('matriz', $lojas))
                                     <span class="px-2 py-1 bg-[#002164] text-[#FFD217] text-xs font-semibold rounded-lg">Matriz</span>
