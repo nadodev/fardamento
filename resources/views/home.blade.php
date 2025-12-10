@@ -125,7 +125,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             @forelse($produtos as $produto)
                 <a href="{{ route('produto.detalhes', $produto->slug) }}" class="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-                    <div class="aspect-square overflow-hidden bg-[#FFD217] flex items-center justify-center">
+                    <div class="aspect-square overflow-hidden bg-white flex items-center justify-center">
                         @php
                             $primeiraFoto = $produto->primeira_foto;
                             $imagemUrl = $primeiraFoto ? $primeiraFoto->url : null;
