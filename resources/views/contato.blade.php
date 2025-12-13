@@ -349,9 +349,6 @@
             </div>
         </div>
     </section>
-
-    @include('layouts.footer')
-
     <script>
         // Mobile Menu Toggle
         document.addEventListener('DOMContentLoaded', function() {

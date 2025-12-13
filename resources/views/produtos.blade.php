@@ -122,8 +122,6 @@
         </div>
     </section>
 
-    @include('layouts.footer')
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuButton = document.getElementById('mobile-menu-button');

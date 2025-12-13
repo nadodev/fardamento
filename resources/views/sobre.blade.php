@@ -546,6 +546,113 @@
                     });
                 });
             }
+
+            // Inicializar mapas das empresas
+            @if($matriz && $matriz->endereco)
+                (function() {
+                    const mapId = 'map-matriz-{{ $matriz->id }}';
+                    const endereco = '{{ $matriz->endereco }}';
+                    const empresaNome = '{{ $matriz->nome }}';
+                    
+                    // Aguardar um pouco para garantir que o container do mapa está renderizado
+                    setTimeout(function() {
+                        // Criar mapa inicial (será atualizado após geocoding)
+                        const mapMatriz = L.map(mapId).setView([-23.5505, -46.6333], 13);
+                        
+                        // Adicionar tile layer do OpenStreetMap
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                            maxZoom: 19
+                        }).addTo(mapMatriz);
+                        
+                        // Geocoding usando Nominatim (OpenStreetMap)
+                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(endereco)}&limit=1`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data && data.length > 0) {
+                                    const lat = parseFloat(data[0].lat);
+                                    const lon = parseFloat(data[0].lon);
+                                    
+                                    // Atualizar visualização do mapa
+                                    mapMatriz.setView([lat, lon], 15);
+                                    
+                                    // Adicionar marcador
+                                    L.marker([lat, lon])
+                                        .addTo(mapMatriz)
+                                        .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}`)
+                                        .openPopup();
+                                } else {
+                                    // Se não encontrar, usar coordenadas padrão do Brasil
+                                    mapMatriz.setView([-14.2350, -51.9253], 5);
+                                    L.marker([-14.2350, -51.9253])
+                                        .addTo(mapMatriz)
+                                        .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}<br><small>Endereço não encontrado no mapa</small>`);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erro ao buscar localização:', error);
+                                // Em caso de erro, usar coordenadas padrão
+                                mapMatriz.setView([-14.2350, -51.9253], 5);
+                                L.marker([-14.2350, -51.9253])
+                                    .addTo(mapMatriz)
+                                    .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}`);
+                            });
+                    }, 100);
+                })();
+            @endif
+
+            @if($filial && $filial->endereco)
+                (function() {
+                    const mapId = 'map-filial-{{ $filial->id }}';
+                    const endereco = '{{ $filial->endereco }}';
+                    const empresaNome = '{{ $filial->nome }}';
+                    
+                    // Aguardar um pouco para garantir que o container do mapa está renderizado
+                    setTimeout(function() {
+                        // Criar mapa inicial (será atualizado após geocoding)
+                        const mapFilial = L.map(mapId).setView([-23.5505, -46.6333], 13);
+                        
+                        // Adicionar tile layer do OpenStreetMap
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                            maxZoom: 19
+                        }).addTo(mapFilial);
+                        
+                        // Geocoding usando Nominatim (OpenStreetMap)
+                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(endereco)}&limit=1`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data && data.length > 0) {
+                                    const lat = parseFloat(data[0].lat);
+                                    const lon = parseFloat(data[0].lon);
+                                    
+                                    // Atualizar visualização do mapa
+                                    mapFilial.setView([lat, lon], 15);
+                                    
+                                    // Adicionar marcador
+                                    L.marker([lat, lon])
+                                        .addTo(mapFilial)
+                                        .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}`)
+                                        .openPopup();
+                                } else {
+                                    // Se não encontrar, usar coordenadas padrão do Brasil
+                                    mapFilial.setView([-14.2350, -51.9253], 5);
+                                    L.marker([-14.2350, -51.9253])
+                                        .addTo(mapFilial)
+                                        .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}<br><small>Endereço não encontrado no mapa</small>`);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erro ao buscar localização:', error);
+                                // Em caso de erro, usar coordenadas padrão
+                                mapFilial.setView([-14.2350, -51.9253], 5);
+                                L.marker([-14.2350, -51.9253])
+                                    .addTo(mapFilial)
+                                    .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}`);
+                            });
+                    }, 100);
+                })();
+            @endif
         });
     </script>
 @endsection
