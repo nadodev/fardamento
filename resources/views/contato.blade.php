@@ -324,31 +324,6 @@
             </div>
         </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="py-24 bg-[#002164] text-[#FFD217] relative overflow-hidden border-t-4 border-[#E6C000]">
-        <div class="absolute inset-0">
-            <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-            <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
-        </div>
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-2xl lg:text-3xl font-extrabold mb-4">Precisa de Ajuda Imediata?</h2>
-            <p class="text-base lg:text-lg mb-8 text-[#FFD217]/90 max-w-3xl mx-auto leading-relaxed">
-                Entre em contato conosco agora mesmo. Nossa equipe está pronta para atender você.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+550000000000" class="group bg-[#FFD217] text-[#002164] px-10 py-5 rounded-xl hover:bg-[#FFD217]/90 transition-all font-bold text-lg shadow-2xl hover:shadow-[#FFD217]/50 transform hover:scale-105 inline-flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                    </svg>
-                    Ligar Agora
-                </a>
-                <a href="{{ route('produtos') }}" class="bg-[#FFD217]/10 backdrop-blur-md text-[#FFD217] px-10 py-5 rounded-xl hover:bg-[#FFD217]/20 transition-all font-semibold text-lg border-2 border-[#FFD217]/30 hover:border-[#FFD217]/50 inline-flex items-center justify-center">
-                    Ver Nossos Produtos
-                </a>
-            </div>
-        </div>
-    </section>
     <script>
         // Mobile Menu Toggle
         document.addEventListener('DOMContentLoaded', function() {
