@@ -5,7 +5,7 @@
     <header class="bg-[#FFD217]/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-[#002164]/20">
         <nav class="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
             <a href="{{ route('home') }}" class="flex items-center space-x-2 md:space-x-3 group">
-                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamento" class="h-10 md:h-14 w-auto group-hover:scale-105 transition-transform">
+                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamentos" class="h-10 md:h-14 w-auto group-hover:scale-105 transition-transform">
             </a>
             
             <!-- Desktop Menu -->
@@ -84,7 +84,7 @@
                     MAIS DE 18 ANOS DE EXCELÊNCIA
                 </div>
                 <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight mb-4 text-[#002164]">
-                    Sobre a <span class="text-[#002164]">Fábrica de Fardamento</span>
+                    Sobre a <span class="text-[#002164]">Fábrica de Fardamentos</span>
                 </h1>
                 <p class="text-base lg:text-lg text-[#002164]/90 leading-relaxed max-w-3xl mx-auto">
                     Conheça nossa história, valores e o compromisso que nos torna referência em uniformes profissionais no Brasil.
@@ -103,7 +103,7 @@
                     </div>
                     <h2 class="text-2xl lg:text-3xl font-extrabold text-[#002164] mb-4 leading-tight">Mais de 18 Anos de Tradição e Excelência</h2>
                     <p class="text-base lg:text-lg text-[#002164]/80 mb-4 leading-relaxed">
-                        Desde 2007, a Fábrica de Fardamento tem sido sinônimo de excelência na fabricação de uniformes profissionais. Nossa jornada é marcada pela busca incessante por inovação, qualidade e satisfação do cliente.
+                        Desde 2007, a Fábrica de Fardamentos tem sido sinônimo de excelência na fabricação de uniformes profissionais. Nossa jornada é marcada pela busca incessante por inovação, qualidade e satisfação do cliente.
                     </p>
                     <p class="text-base lg:text-lg text-[#002164]/80 mb-4 leading-relaxed">
                         Começamos com uma pequena operação e, ao longo dos anos, expandimos nossa presença com duas lojas estrategicamente localizadas para melhor atender nossos clientes. Cada uniforme que produzimos carrega nosso compromisso com a qualidade e a dedicação de nossa equipe.
@@ -187,117 +187,80 @@
                 </p>
             </div>
             <div class="grid md:grid-cols-2 gap-10">
-                <!-- Loja Matriz -->
-                <div class="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100">
-                    <div class="h-80 bg-gradient-to-br from-blue-50 to-gray-100 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                        <img src="{{ asset('imagem/07.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <div class="p-10">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="w-2 h-2 bg-blue-700 rounded-full"></div>
-                            <span class="text-sm font-semibold text-blue-700 uppercase tracking-wide">Loja Matriz</span>
+                @foreach($empresas as $empresa)
+                    @php
+                        $primeiraFoto = $empresa->fotos->first();
+                        $imagemUrl = null;
+                        if ($primeiraFoto && $primeiraFoto->caminho) {
+                            $caminhoFoto = $primeiraFoto->caminho;
+                            if (!str_starts_with($caminhoFoto, 'storage/') && !str_starts_with($caminhoFoto, 'http://') && !str_starts_with($caminhoFoto, 'https://')) {
+                                $caminhoFoto = 'storage/' . ltrim($caminhoFoto, '/');
+                            }
+                            $imagemUrl = asset($caminhoFoto);
+                        } else {
+                            $imagemUrl = $empresa->tipo === 'matriz' ? asset('imagem/07.PNG') : asset('imagem/08.PNG');
+                        }
+                        $isMatriz = $empresa->tipo === 'matriz';
+                    @endphp
+                    <div class="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100">
+                        <div class="h-80 {{ $isMatriz ? 'bg-gradient-to-br from-blue-50 to-gray-100' : 'bg-gradient-to-br from-orange-50 to-gray-100' }} overflow-hidden relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                            <img src="{{ $imagemUrl }}" alt="{{ $empresa->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Loja Matriz</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed text-base lg:text-lg">
-                            Nossa loja matriz é o coração da Fábrica de Fardamento. Localizada no centro da cidade, oferece um amplo espaço de atendimento e exposição de produtos. Aqui você encontra nossa equipe mais experiente e nosso maior estoque de uniformes prontos para entrega.
-                        </p>
-                        <div class="space-y-4">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-900 mb-1">Endereço</p>
-                                    <p class="text-gray-600">Rua Principal, 123 - Centro</p>
-                                    <p class="text-gray-600">Cidade - Estado, CEP 00000-000</p>
-                                </div>
+                        <div class="p-10">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-2 h-2 {{ $isMatriz ? 'bg-blue-700' : 'bg-orange-600' }} rounded-full"></div>
+                                <span class="text-sm font-semibold {{ $isMatriz ? 'text-blue-700' : 'text-orange-700' }} uppercase tracking-wide">{{ strtoupper($empresa->tipo) }}</span>
                             </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                    </svg>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ $empresa->nome }}</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed text-base lg:text-lg">
+                                {{ $empresa->descricao ?? 'Nossa loja oferece atendimento personalizado e produtos de alta qualidade.' }}
+                            </p>
+                            <div class="space-y-4">
+                                @if($empresa->endereco)
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 {{ $isMatriz ? 'bg-blue-100' : 'bg-orange-100' }} rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5 {{ $isMatriz ? 'text-blue-700' : 'text-orange-700' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-900 mb-1">Endereço</p>
+                                        <p class="text-gray-600">{{ $empresa->endereco }}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="font-semibold text-gray-900 mb-1">Telefone</p>
-                                    <p class="text-gray-600">(00) 0000-0000</p>
+                                @endif
+                                @if($empresa->telefone)
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 {{ $isMatriz ? 'bg-blue-100' : 'bg-orange-100' }} rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5 {{ $isMatriz ? 'text-blue-700' : 'text-orange-700' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-900 mb-1">Telefone</p>
+                                        <p class="text-gray-600">{{ $empresa->telefone }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
+                                @endif
+                                @if($empresa->horario_funcionamento)
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 {{ $isMatriz ? 'bg-blue-100' : 'bg-orange-100' }} rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5 {{ $isMatriz ? 'text-blue-700' : 'text-orange-700' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-900 mb-1">Horário de Funcionamento</p>
+                                        <p class="text-gray-600">{{ $empresa->horario_funcionamento }}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="font-semibold text-gray-900 mb-1">Horário de Funcionamento</p>
-                                    <p class="text-gray-600">Segunda a Sexta: 8h às 18h</p>
-                                    <p class="text-gray-600">Sábado: 8h às 13h</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Loja Filial -->
-                <div class="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100">
-                    <div class="h-80 bg-gradient-to-br from-orange-50 to-gray-100 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                        <img src="{{ asset('imagem/08.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <div class="p-10">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="w-2 h-2 bg-orange-600 rounded-full"></div>
-                            <span class="text-sm font-semibold text-orange-700 uppercase tracking-wide">Loja Filial</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Loja Filial</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed text-base lg:text-lg">
-                            Nossa loja filial foi inaugurada para melhor atender nossos clientes em uma região estratégica. Com um ambiente moderno e acolhedor, oferecemos o mesmo padrão de qualidade e atendimento personalizado que caracteriza a Fábrica de Fardamento.
-                        </p>
-                        <div class="space-y-4">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 text-orange-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-900 mb-1">Endereço</p>
-                                    <p class="text-gray-600">Av. Comercial, 456 - Bairro Novo</p>
-                                    <p class="text-gray-600">Cidade - Estado, CEP 00000-000</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 text-orange-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-900 mb-1">Telefone</p>
-                                    <p class="text-gray-600">(00) 0000-0000</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 text-orange-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-gray-900 mb-1">Horário de Funcionamento</p>
-                                    <p class="text-gray-600">Segunda a Sexta: 8h às 18h</p>
-                                    <p class="text-gray-600">Sábado: 8h às 13h</p>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -353,6 +316,12 @@
                         <p class="text-sm text-[#002164]/80"><span class="font-semibold">Horário:</span> {{ $matriz->horario_funcionamento }}</p>
                     @endif
                 </div>
+
+                @if($matriz->endereco)
+                    <div class="max-w-3xl mx-auto mt-6">
+                        <div id="map-matriz-{{ $matriz->id }}" class="w-full h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-[#002164]/20"></div>
+                    </div>
+                @endif
             </div>
         </section>
     @endif
@@ -403,6 +372,12 @@
                         <p class="text-sm text-[#002164]/80"><span class="font-semibold">Horário:</span> {{ $filial->horario_funcionamento }}</p>
                     @endif
                 </div>
+
+                @if($filial->endereco)
+                    <div class="max-w-3xl mx-auto mt-6">
+                        <div id="map-filial-{{ $filial->id }}" class="w-full h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-[#002164]/20"></div>
+                    </div>
+                @endif
             </div>
         </section>
     @endif

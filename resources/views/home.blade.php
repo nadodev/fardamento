@@ -5,7 +5,7 @@
     <header class="bg-[#FFD217]/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-[#002164]/20">
         <nav class="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
             <a href="{{ route('home') }}" class="flex items-center space-x-2 md:space-x-3 group">
-                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamento" class="h-10 md:h-14 w-auto group-hover:scale-105 transition-transform">
+                <img src="{{ asset('imagem/logo.png') }}" alt="Fábrica de Fardamentos" class="h-10 md:h-14 w-auto group-hover:scale-105 transition-transform">
             </a>
             
             <!-- Desktop Menu -->
@@ -144,7 +144,6 @@
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002164]/90 via-[#002164]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-end p-6">
                         <p class="text-[#FFD217] font-semibold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 mb-2">{{ $produto->nome }}</p>
-                        <p class="text-[#FFD217]/90 text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Código: {{ $produto->codigo }}</p>
                     </div>
                 </a>
             @empty
@@ -165,7 +164,6 @@
 </section>
     <!-- Sobre a Empresa -->
     <section class="py-24 bg-[#002164] text-[#FFD217] border-t-4 border-[#E6C000] relative overflow-hidden">
-        <!-- Background Effects -->
         <div class="absolute inset-0">
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFD217]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
             <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#FFD217]/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
@@ -183,7 +181,6 @@
             </div>
 
             @php
-                // Matriz sempre primeiro, depois as demais empresas
                 $empresasOrdenadas = $empresas->sortBy(function ($empresa) {
                     return $empresa->tipo === 'matriz' ? 0 : 1;
                 })->values();
@@ -231,7 +228,6 @@
                         </div>
 
                         @php
-                            // soma todas as fotos dessa empresa para manter o índice global em sincronia com o modal
                             $startIndex += $empresa->fotos->count();
                         @endphp
                     @endif
@@ -248,6 +244,12 @@
                             <p class="text-sm"><span class="font-semibold">Horário:</span> {{ $empresa->horario_funcionamento }}</p>
                         @endif
                     </div>
+
+                    @if($empresa->endereco)
+                        <div class="max-w-3xl mx-auto mt-6">
+                            <div id="map-{{ $empresa->id }}" class="w-full h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-[#FFD217]/20"></div>
+                        </div>
+                    @endif
                 </div>
             @endforeach
 
@@ -346,7 +348,7 @@
                     </div>
                     <h2 class="text-3xl lg:text-4xl font-extrabold text-[#002164] mb-4 leading-tight">Mais de 18 Anos de Tradição e Excelência</h2>
                     <p class="text-base lg:text-lg text-[#002164]/80 mb-4 leading-relaxed">
-                        Desde 2007, a Fábrica de Fardamento tem sido sinônimo de excelência na fabricação de uniformes profissionais. Nossa jornada é marcada pela busca incessante por inovação, qualidade e satisfação do cliente.
+                        Desde 2007, a Fábrica de fardamentos tem sido sinônimo de excelência na fabricação de uniformes profissionais. Nossa jornada é marcada pela busca incessante por inovação, qualidade e satisfação do cliente.
                     </p>
                     <p class="text-base lg:text-lg text-[#002164]/80 mb-8 leading-relaxed">
                         Com duas lojas estrategicamente localizadas, oferecemos atendimento personalizado e soluções sob medida para empresas de todos os portes.
@@ -501,5 +503,58 @@
                 closeGalleryModal();
             }
         });
+
+        // Inicializar mapas das empresas
+        @foreach($empresas as $empresa)
+            @if($empresa->endereco)
+                (function() {
+                    const mapId = 'map-{{ $empresa->id }}';
+                    const endereco = '{{ $empresa->endereco }}';
+                    const empresaNome = '{{ $empresa->nome }}';
+                    
+                    // Criar mapa inicial (será atualizado após geocoding)
+                    const map{{ $empresa->id }} = L.map(mapId).setView([-23.5505, -46.6333], 13);
+                    
+                    // Adicionar tile layer do OpenStreetMap
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                        maxZoom: 19
+                    }).addTo(map{{ $empresa->id }});
+                    
+                    // Geocoding usando Nominatim (OpenStreetMap)
+                    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(endereco)}&limit=1`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data && data.length > 0) {
+                                const lat = parseFloat(data[0].lat);
+                                const lon = parseFloat(data[0].lon);
+                                
+                                // Atualizar visualização do mapa
+                                map{{ $empresa->id }}.setView([lat, lon], 15);
+                                
+                                // Adicionar marcador
+                                L.marker([lat, lon])
+                                    .addTo(map{{ $empresa->id }})
+                                    .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}`)
+                                    .openPopup();
+                            } else {
+                                // Se não encontrar, usar coordenadas padrão do Brasil
+                                map{{ $empresa->id }}.setView([-14.2350, -51.9253], 5);
+                                L.marker([-14.2350, -51.9253])
+                                    .addTo(map{{ $empresa->id }})
+                                    .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}<br><small>Endereço não encontrado no mapa</small>`);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erro ao buscar localização:', error);
+                            // Em caso de erro, usar coordenadas padrão
+                            map{{ $empresa->id }}.setView([-14.2350, -51.9253], 5);
+                            L.marker([-14.2350, -51.9253])
+                                .addTo(map{{ $empresa->id }})
+                                .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}`);
+                        });
+                })();
+            @endif
+        @endforeach
     </script>
 @endsection

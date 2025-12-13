@@ -80,22 +80,7 @@
     <!-- Products Grid -->
     <section class="py-24 bg-white border-t-4 border-[#E6C000]">
         <div class="container mx-auto px-4">
-            <!-- Filter Section -->
-            <div class="mb-12">
-                <div class="flex flex-wrap items-center justify-center gap-4">
-                    <button onclick="filterProducts('all')" class="filter-btn active px-6 py-3 rounded-xl bg-[#002164] text-[#FFD217] font-semibold shadow-lg hover:shadow-xl transition-all transform hover:scale-105" data-filter="all">
-                        Todas as Lojas
-                    </button>
-                    <button onclick="filterProducts('matriz')" class="filter-btn px-6 py-3 rounded-xl bg-white text-[#002164] font-semibold hover:bg-[#002164]/10 transition-all transform hover:scale-105" data-filter="matriz">
-                        Loja Matriz
-                    </button>
-                    <button onclick="filterProducts('filial')" class="filter-btn px-6 py-3 rounded-xl bg-white text-[#002164] font-semibold hover:bg-[#002164]/10 transition-all transform hover:scale-105" data-filter="filial">
-                        Loja Filial
-                    </button>
-                </div>
-            </div>
-
-            <div id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @forelse($produtos as $produto)
                     @php
                         $primeiraFoto = $produto->primeira_foto;
@@ -112,17 +97,9 @@
                         }
                         $lojas = $produto->lojas ?? [];
                     @endphp
-                    <a href="{{ route('produto.detalhes', $produto->slug) }}" class="product-item group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-[#002164]/20" data-loja="{{ implode(',', $lojas) }}">
+                    <a href="{{ route('produto.detalhes', $produto->slug) }}" class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-[#002164]/20">
                         <div class="h-64 bg-white overflow-hidden relative flex items-center justify-center">
                             <img src="{{ $imagemUrl }}" alt="{{ $produto->nome }}" class="max-w-full max-h-full object-contain group-hover:scale-110 transition duration-700">
-                            <div class="absolute top-3 right-3 flex gap-2">
-                                @if(in_array('matriz', $lojas))
-                                    <span class="px-2 py-1 bg-[#002164] text-[#FFD217] text-xs font-semibold rounded-lg">Matriz</span>
-                                @endif
-                                @if(in_array('filial', $lojas))
-                                    <span class="px-2 py-1 bg-[#002164] text-[#FFD217] text-xs font-semibold rounded-lg">Filial</span>
-                                @endif
-                            </div>
                         </div>
                         <div class="p-6">
                             <div class="text-xs text-[#002164]/60 mb-2">Código: {{ $produto->codigo }}</div>
@@ -142,59 +119,12 @@
                     </div>
                 @endforelse
             </div>
-
-            <!-- Empty State -->
-            <div id="empty-state" class="hidden text-center py-16">
-                <svg class="w-24 h-24 mx-auto text-[#002164]/30 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
-                </svg>
-                <h3 class="text-2xl font-bold text-[#002164] mb-2">Nenhum produto encontrado</h3>
-                <p class="text-[#002164]/80">Tente selecionar outro filtro.</p>
-            </div>
         </div>
     </section>
 
     @include('layouts.footer')
 
     <script>
-        function filterProducts(filter) {
-            const products = document.querySelectorAll('.product-item');
-            const emptyState = document.getElementById('empty-state');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            let visibleCount = 0;
-
-            // Update button states
-            filterButtons.forEach(btn => {
-                if (btn.dataset.filter === filter) {
-                    btn.classList.remove('bg-white', 'text-[#002164]', 'hover:bg-[#002164]/10');
-                    btn.classList.add('bg-[#002164]', 'text-[#FFD217]', 'shadow-lg', 'hover:shadow-xl');
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('bg-[#002164]', 'text-[#FFD217]', 'shadow-lg', 'hover:shadow-xl', 'active');
-                    btn.classList.add('bg-white', 'text-[#002164]', 'hover:bg-[#002164]/10');
-                }
-            });
-
-            // Filter products
-            products.forEach(product => {
-                const lojas = product.dataset.loja.split(',');
-                
-                if (filter === 'all' || lojas.includes(filter)) {
-                    product.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-
-            // Show/hide empty state
-            if (visibleCount === 0) {
-                emptyState.classList.remove('hidden');
-            } else {
-                emptyState.classList.add('hidden');
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             const menuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');

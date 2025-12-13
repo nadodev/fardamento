@@ -105,115 +105,95 @@
                 </p>
             </div>
             <div class="grid md:grid-cols-2 gap-10 mb-16">
-                <!-- Loja Matriz -->
-                <div class="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-[#002164]/20">
-                    <div class="h-80 bg-[#FFD217] overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                        <img src="{{ asset('imagem/07.PNG') }}" alt="Loja Matriz" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <div class="p-10">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="w-2 h-2 bg-[#002164] rounded-full"></div>
-                            <span class="text-sm font-semibold text-[#002164] uppercase tracking-wide">Loja Matriz</span>
+                @foreach($empresas as $empresa)
+                    @php
+                        $primeiraFoto = $empresa->fotos->first();
+                        $imagemUrl = null;
+                        if ($primeiraFoto && $primeiraFoto->caminho) {
+                            $caminhoFoto = $primeiraFoto->caminho;
+                            if (!str_starts_with($caminhoFoto, 'storage/') && !str_starts_with($caminhoFoto, 'http://') && !str_starts_with($caminhoFoto, 'https://')) {
+                                $caminhoFoto = 'storage/' . ltrim($caminhoFoto, '/');
+                            }
+                            $imagemUrl = asset($caminhoFoto);
+                        } else {
+                            $imagemUrl = $empresa->tipo === 'matriz' ? asset('imagem/07.PNG') : asset('imagem/08.PNG');
+                        }
+                    @endphp
+                    <div class="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-[#002164]/20">
+                        <div class="h-80 bg-white overflow-hidden relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                            @if($primeiraFoto && $primeiraFoto->caminho)
+                                <img src="{{ asset($primeiraFoto->caminho) }}" alt="{{ $empresa->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            @else
+                                <img src="{{ $imagemUrl }}" alt="{{ $empresa->nome }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            @endif
                         </div>
-                        <h3 class="text-2xl font-bold text-[#002164] mb-4">Loja Matriz</h3>
-                        <div class="space-y-5">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Endereço</p>
-                                    <p class="text-[#002164]/80">Av. Dr Júlio Maranhão, 7, Guararapes</p>
-                                    <p class="text-[#002164]/80">Jaboatão dos Guararapes-PE, CEP 54325-440</p>
-                                </div>
+                        <div class="p-10">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-2 h-2 bg-[#002164] rounded-full"></div>
+                                <span class="text-sm font-semibold text-[#002164] uppercase tracking-wide">{{ strtoupper($empresa->tipo) }}</span>
                             </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                    </svg>
+                            <h3 class="text-2xl font-bold text-[#002164] mb-4">{{ $empresa->nome }}</h3>
+                            <div class="space-y-5">
+                                @if($empresa->endereco)
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Endereço</p>
+                                        <p class="text-[#002164]/80">{{ $empresa->endereco }}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Telefone</p>
-                                    <p class="text-[#002164]/80">(81) 3074-2933</p>
-                                    <p class="text-[#002164]/80">(81) 97910-6667</p>
-                                    <p class="text-[#002164]/80">fabricadefardamentos@gmail.com</p>
+                                @endif
+                                @if($empresa->telefone || $empresa->email)
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Contato</p>
+                                        @if($empresa->telefone)
+                                            <p class="text-[#002164]/80">{{ $empresa->telefone }}</p>
+                                        @endif
+                                        @if($empresa->email)
+                                            <p class="text-[#002164]/80">{{ $empresa->email }}</p>
+                                        @endif
+                                        @if($empresa->contatos->isNotEmpty())
+                                            @foreach($empresa->contatos as $contato)
+                                                <p class="text-[#002164]/80">{{ $contato->label ?? $contato->tipo }}: {{ $contato->valor }}</p>
+                                            @endforeach
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
+                                @endif
+                                @if($empresa->horario_funcionamento)
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Horário de Funcionamento</p>
+                                        <p class="text-[#002164]/80">{{ $empresa->horario_funcionamento }}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Horário de Funcionamento</p>
-                                    <p class="text-[#002164]/80">Segunda a Sexta: 8h às 18h</p>
-                                    <p class="text-[#002164]/80">Sábado: 8h às 13h</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Loja Filial -->
-                <div class="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-[#002164]/20">
-                    <div class="h-80 bg-[#FFD217] overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                        <img src="{{ asset('imagem/08.PNG') }}" alt="Loja Filial" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <div class="p-10">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="w-2 h-2 bg-[#002164] rounded-full"></div>
-                            <span class="text-sm font-semibold text-[#002164] uppercase tracking-wide">Loja Filial</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-[#002164] mb-4">Loja Filial</h3>
-                        <div class="space-y-5">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Endereço</p>
-                                    <p class="text-[#002164]/80">Estrada do Rufino, 850, Serraria</p>
-                                    <p class="text-[#002164]/80">Diadema-SP, CEP 09980-380</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Telefone</p>
-                                    <p class="text-[#002164]/80">(11) 4057-3202</p>
-                                    <p class="text-[#002164]/80">(11) 94211-0729</p>
-                                    <p class="text-[#002164]/80">fabricadefardamentossp@gmail.com</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-[#002164]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-[#002164]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-[#002164] mb-1 text-base lg:text-lg">Horário de Funcionamento</p>
-                                    <p class="text-[#002164]/80">Segunda a Sexta: 8h às 18h</p>
-                                    <p class="text-[#002164]/80">Sábado: 8h às 13h</p>
-                                </div>
+                                @endif
                             </div>
                         </div>
+                        @if($empresa->endereco)
+                            <div class="px-10 pb-10">
+                                <div id="map-contato-{{ $empresa->id }}" class="w-full h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-[#002164]/20"></div>
+                            </div>
+                        @endif
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -451,6 +431,59 @@
                     }
                 }, 100);
             @endif
+
+            // Inicializar mapas das empresas
+            @foreach($empresas as $empresa)
+                @if($empresa->endereco)
+                    (function() {
+                        const mapId = 'map-contato-{{ $empresa->id }}';
+                        const endereco = '{{ $empresa->endereco }}';
+                        const empresaNome = '{{ $empresa->nome }}';
+                        
+                        // Criar mapa inicial (será atualizado após geocoding)
+                        const map{{ $empresa->id }} = L.map(mapId).setView([-23.5505, -46.6333], 13);
+                        
+                        // Adicionar tile layer do OpenStreetMap
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                            maxZoom: 19
+                        }).addTo(map{{ $empresa->id }});
+                        
+                        // Geocoding usando Nominatim (OpenStreetMap)
+                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(endereco)}&limit=1`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data && data.length > 0) {
+                                    const lat = parseFloat(data[0].lat);
+                                    const lon = parseFloat(data[0].lon);
+                                    
+                                    // Atualizar visualização do mapa
+                                    map{{ $empresa->id }}.setView([lat, lon], 15);
+                                    
+                                    // Adicionar marcador
+                                    L.marker([lat, lon])
+                                        .addTo(map{{ $empresa->id }})
+                                        .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}`)
+                                        .openPopup();
+                                } else {
+                                    // Se não encontrar, usar coordenadas padrão do Brasil
+                                    map{{ $empresa->id }}.setView([-14.2350, -51.9253], 5);
+                                    L.marker([-14.2350, -51.9253])
+                                        .addTo(map{{ $empresa->id }})
+                                        .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}<br><small>Endereço não encontrado no mapa</small>`);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erro ao buscar localização:', error);
+                                // Em caso de erro, usar coordenadas padrão
+                                map{{ $empresa->id }}.setView([-14.2350, -51.9253], 5);
+                                L.marker([-14.2350, -51.9253])
+                                    .addTo(map{{ $empresa->id }})
+                                    .bindPopup(`<strong>${empresaNome}</strong><br>${endereco}`);
+                            });
+                    })();
+                @endif
+            @endforeach
         });
     </script>
 @endsection
